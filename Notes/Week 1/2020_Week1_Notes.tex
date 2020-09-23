@@ -1,0 +1,330 @@
+% Created 2020-02-03 Mon 15:34
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{summary}{Summary}[section]
+\author{Jake Bailey}
+\date{\today}
+\title{Math 532 Notes}
+\hypersetup{
+ pdfauthor={Jake Bailey},
+ pdftitle={Math 532 Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Lecture 1 \textit{<2020-01-15 Wed>}}
+\label{sec:org630fe20}
+
+Basic introductions to the course. Office hours M 2-3 (Math 220), TW
+2-3 (Math 219), and by appointment. Book is Topology by Munkres. 
+
+\subsection{Topological Spaces}
+\label{sec:org7e13e86}
+
+What are open sets in \(\mathbb{R}\)? We know they can be intervals,
+like \((1,2)\) or \((a,b)\). \(\mathbb{R}\) itself is another example, as
+well as its complement, \(\emptyset\).
+
+\begin{question}
+What questions does Topology answer. Which does it ask? 
+\end{question}
+
+\begin{question}
+What is the origin of the name "Point-Set Topology"?
+\end{question}
+
+The set of all open intervals defines the "standard topology" on
+\(\mathbb{R}\).
+
+We'll also be concerned with homeomorphisms (Donuts + Coffee mugs). 
+
+Much of "Point-Set Topology" is motivated by necessity from real analysis. 
+
+Metrics induce a topology. A reasonable question in topology is "how
+close is this space to being metrizable?"
+
+\begin{summary}
+We'll cover fundamental Point-Set Topology as well as som algebraic
+topology in this course. We begin with open sets in \(\mathbb{R}\).
+\end{summary}
+
+\subsection{Class Outline}
+\label{sec:orgf94402b}
+\begin{itemize}
+\item Basics of Topology
+\item Waht is a topology
+\item Continuous functions
+\item Building new topologies
+\begin{itemize}
+\item Product, Subspace, Metric, Quotient T's
+\end{itemize}
+\item Connectedness
+\item Compactness
+\item Separation Axioms
+\item Metrizability
+\item Tychonoff's Theorem
+\item Topics in Algebraic Topology
+\begin{itemize}
+\item Homotopy
+\item Fundamental Groups
+\item Boraz-Luanne?
+\end{itemize}
+\end{itemize}
+
+
+\subsection{Back to Topology}
+\label{sec:orgdf5e52d}
+\begin{definition}
+
+
+Given a set \(X\), a topology on \(X\) is a collection \(T\) of subsets of
+\(X\) with the following properties:
+
+\begin{enumerate}
+\item \(\emptyset, X \in T\)
+\item If \(X_{\alpha} \in T, \forall \alpha \in J\), then
+\(\bigcup\limits_{\alpha \in J}X_{\alpha} \in T\). (\(J\) arbitrary
+indices).
+\item If \(J\) is finite, then \(\cap_{\alpha \in J}X_{\alpha} \in T\).
+\end{enumerate}
+\end{definition}
+
+Topologies are collections of sets that 
+\begin{enumerate}
+\item Contain the empty set and the whole space
+\item Are closed under arbitrary unions
+\item Are closed under finite intersections
+\end{enumerate}
+
+\begin{question}
+
+
+Where/how does an infinite intersection break a topology? Why are
+finite intersections the only kind allowed? 
+\end{question}
+\begin{summary}
+
+
+A topology is a collection of sets with three key properties
+\end{summary}
+
+\subsection{Topologies on \(\mathbb{R}\)}
+\label{sec:org0b1ef43}
+\begin{enumerate}
+\item The standard topology, \(T_{std}\).
+\item The lower limit topology, \(\mathbb{R}_l\)
+\begin{enumerate}
+\item Basis of elements as \([a,b)\)
+\end{enumerate}
+\item Any set \(X\) has two topologies
+\begin{enumerate}
+\item The discrete topology, \(T = 2^X\)
+\item The indiscrete topology, \(T = \{\emptyset, X\}\)
+\end{enumerate}
+\end{enumerate}
+
+
+\begin{question}
+
+
+Are there sets for which the discrete and indiscrete topologies are
+equivalent?
+\end{question}
+
+\subsection{Example}
+\label{sec:orga81d598}
+Take \(X = \{1,2,3\}\). Then, the following are topologies on \(X\): \(T =
+\{\{1\},\{1,2\},X,\emptyset\}\), \(T =
+\{\{2\},\{1,2\},\{2,3\},X,\emptyset\}\). The following is not: \(T =
+\{\{1\},\{3\},X,\emptyset\}\).
+
+\begin{summary}
+
+
+Topologies can be formed on all sets, even ones we wouldn't categorize
+with others, e.g. \(\mathbb{R}\) vs \(\mathbb{N}\), etc.
+\end{summary}
+
+\section{More on topological spaces \textit{<2020-01-17 Fri>}}
+\label{sec:org21ef3e9}
+\begin{definition}
+
+
+Suppose that \(T, T'\) are two topologies on \(X\). If \(T \subseteq T'\),
+we say that \(T'\) is \textit{finer} than \(T\), and that \(T\) is
+\textit{coarser} than \(T'\). We say that \(T\) and \(T'\) are comparable if
+either is contained in the other. 
+\end{definition}
+
+\begin{definition}
+
+
+If \(X\) is a set, a \textit{basis} for a topology on \(X\) is a
+collection \(B\) of subsets such that 
+\begin{enumerate}
+\item \(\forall x \in X, \exists b \in B\) such that \(x \in b\).
+\item If \(b_1, b_2 \in B\), then \(\exists b_3 \in B\) such that \(b_3
+   \subseteq b_1\cap b_2\).
+\end{enumerate}
+\end{definition}
+
+\begin{question}
+
+
+Is the standard topology in \(\mathbb{R}\) comparable with the lower
+limit topology?
+\end{question}
+
+\begin{definition}
+
+
+A set \(X\) along with a topology is called a \textit\{topological
+space\}.
+\end{definition}
+
+\begin{definition}
+
+
+If \((X,T)\) is a topological space, than a set \(Y\subseteq X\) is open
+iff \(Y \in T\). \(Z\subseteq X\) is closed iff \(Z\setminus X\) is
+open. (Open means a set is a member of the topology). 
+\end{definition}
+
+\subsection{Example}
+\label{sec:org9cbfb6e}
+\$(\mathbb{R}, 2\textsuperscript{\mathbb{R}}). 
+
+All sets in \(\mathbb{R}\) are open, and they're also closed. 
+
+\((\mathbb{R}, \{\emptyset, \mathbb{R}\})\).
+
+Open sets are only \(\emptyset, \mathbb{R}\). These are also the only
+closed sets. 
+
+\((\mathbb{R}, T_{std})\)
+
+\((0,5)\) is open. \(\mathbb{R}\setminus (0,5)\) is closed.
+
+Recall that \(T_{std}\) is generated by the collection of open intervals
+\((a,b)\) in \(\mathbb{R}\). 
+
+\begin{question}
+
+
+Do bases have to be minimal and/or orthonormal? Does that question
+even make sense? 
+\end{question}
+
+\begin{question}
+
+
+Can we characterize topologies where open sets are also closed?
+\end{question}
+
+\subsection{Bases}
+\label{sec:org4d7ca16}
+
+The topology generated by a basis \(B\) is defined as: \(U\) is open in
+\(X\) if \(\forall x \in U, \exists b \in B\) such that \(x \in b \subseteq
+U\).
+
+To check is a set \(U\) is open, 
+
+\begin{enumerate}
+\item Pick \(x \in U\)
+\item Find \(b\in B\) such that \(x \in b \subseteq U\).
+\end{enumerate}
+
+
+
+\subsubsection{Example}
+\label{sec:org68b4ac4}
+Is \(U = (0,5)\cup(15,20)\) open in \(\mathbb{R}_{std}\)? Yes. 
+
+\begin{proof}
+
+
+Let \(x \in U\). Then \(x \in (0,5)\) or \(x \in (15,20)\). Case 1: \(x \in
+(0,5)\). \((0,5) \in B\), and \((0,5) \subseteq (0,5)\). Case 2 is
+equivalent.
+\end{proof}
+
+Checking for openness is a \textit{pointwise} operation. 
+
+\subsection{Generating Topologies from Bases}
+\label{sec:org8c71044}
+\begin{theorem}
+
+
+Given a set \(X\) and a basis \(B\), the collection of sets \(T\) generated
+by \(B\) as described above is a topology. 
+\end{theorem}
+
+\#+BEGIN\textsubscript{proof}
+
+We look to show 3 properties:
+\begin{enumerate}
+\item \(\emptyset, X \in T\)
+\item \(T\) is closed under unions
+\item \(T\) is closed under finite intersections
+\end{enumerate}
+
+
+
+\begin{enumerate}
+\item \(\emptyset \in T\) is vacuously true. For \(X \in T\), Choose \(U =
+   X\). Then, \(\exists b\in B\) such that \(x \in b\). Satisfies clause 1.
+\item Let \(U_{\alpha} \in T\). For any \(x \in \cup U_{\alpha}\), \(\exists b
+   \in B\) such that \(x \in b, b \subseteq U_{\alpha}\), since \(\exists
+   \alpha'\) such that \(x \in \cup U_{\alpha'}\), and \(U_{\alpha'}\) is
+open.
+\item For finite intersections: induction. Prove \(T\) is closed under
+pairwise intersections, then assume \(n\) intersections, prove \(n +
+   1\). Similar to unions, since \(x \in U = U_1\cap U_2\) implies \(x \in
+   U_1\) and \(x \in U_2\), so \(\exists b \in B\) such that \(x\in n\), and
+\(b \subseteq U_1\) and \(b \subseteq U_2\).
+\end{enumerate}
+
+
+\begin{lemma}
+
+
+Let \(X\) be a set. Let \(B\) be a basis for a topology on \(X\). Then \(T\)
+equals the collection of all unions of elements of \(B\).
+\end{lemma}
+
+Proof by subsetting both ways. 
+
+\begin{lemma}
+
+
+Let \((X,T)\) be a topological space. Suppose \(C\) is a collection of
+open sets of \(X\) such that \(\forall U \subseteq X\), \(U\) open, and
+\(\forall x \in U\), \(\exists c \in C\) such that \(x \in c\subseteq
+U\). Then \(C\) is a basis for a topology on \(X\). 
+\end{lemma}
+\end{document}

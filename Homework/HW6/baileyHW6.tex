@@ -1,0 +1,190 @@
+% Created 2020-03-24 Tue 17:36
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Homework 6, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\newtheorem{definition}{Definition}[section]
+\author{Jacob Bailey}
+\date{\today}
+\title{Homework Set 6}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Homework Set 6},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\label{sec:orga73d30a}
+
+Let \(f: X\rightarrow X\) be continuous. Show that if \(X = [0, 1]\), there is a
+point \(x\in X\) such that \(f(x) = x\). The point \(x\) is called a fixed
+point of \(f\). What happens if \(X\) is \([0,1)\) or \((0, 1]\)?
+
+
+\begin{proof}
+In all three cases considered, \(X\) is connected. By construction, \(f(0) \geq 0\)
+and \(f(1) \leq 1\). Next, we construct a new function \(g(x) = f(x) - x\). This
+function is also continuous, and we have that \(g(0) > 0\) and \(g(1) < 0\). By the
+intermediate value theorem, we now have that \(\exists x \in (0,1)\) such that
+\(g(x) = 0\), or \(f(x) = x\).
+\end{proof}
+
+If we remove the endpoints from \(X\), we are not guaranteed to find a
+construction \(g\) which enables this proof. 
+\section{Problem 2}
+\label{sec:org12ca487}
+
+Let \(X\) be an ordered set in the order topology. Show that if \(X\) is connected,
+then \(X\) is a linear continuum. 
+
+
+\begin{proof}
+A linear continuum is an ordered set with two additional properties: the least
+upper bound property, and that for any \(x,y\in X, x<y\), \(\exists z \in X\) such
+that \(x < z < y\).
+
+It is trivial that the second property holds for \(X\), for if it didn't, \(X\)
+would contain a separation. 
+
+To show the least upper bound property, we consider another set \(A\). If \(A\) is
+non-empty and has an upper bound \(u\) but no least upper bound, consider the sets
+\(A_1 = \{x\in X\ |\ \exists y(x) \in A : x \leq y(x)\}\) and \(A_2 = X\setminus
+A_1\). As \(A \subset A_1\), it is non-empty. As \(u\) cannot be in \(A\) (as an upper
+bound for \(A\) that is in \(A\) is a maximum which is also a least upper bound), \(u
+> y\) for all \(y\in A\), so \(u \in A_2\), so \(A_2\) is non-empty as well. Both of
+these sets are disjoint, and cover \(X\) by construction.
+
+\(A_1\) is open, as for all \(x \in A_1\), \(x\in(-\infty, y(x)) \subset A_1\). If \(x
+= y(x) \in A\), we know that some \(x'\in A\) must exist with \(x' > x\), as
+otherwise \(x\) would be a maximum of \(A\), which we have assumed not to exist.
+Then \(x \in (-\infty, x')\subset A_1\) as well. 
+
+\(A_2\) is open, because if \(x \in A_2\), \(x\) is an upper bound for \(A\), but it
+cannot be the smallest such (as \(A\) has been assumed to have no smallest upper
+bound), so there is a smaller upper bound \(z\) for \(A\) and clearly \(x \in (z,
+\infty) \subset A_2\). 
+
+\(X\) having a cover by two open sets contradicts its connectedness, and so we
+conclude that \(X\) must have a least upper bound. 
+
+By both portions, we have shown that \(X\) satisfies the properties of a linear
+continuum. \(X\) is a linear continuum. 
+\end{proof}
+
+\section{Problem 3}
+\label{sec:org36f579f}
+
+a) Is a product of path-connected spaces necessarily path connected? 
+b) If \(A\subseteq X\) and \(A\) is path connected, is \(\overline{A}\) necessarily
+path connected? 
+c) If \(f: X\rightarrow Y\) is continuous and \(X\) is path connected, is \(f(X)\)
+necessarily path connected? 
+d) If \(\{A_{\alpha}\}\) is a collection of path-connected subspaces of \(X\) and if
+\(\bigcap A_{\alpha} \not = \emptyset\) is \(\bigcup A_{\alpha}\) necessarily path
+connected? 
+
+
+a) 
+\begin{proof}
+Let \(x\) and \(y\) be two points in the product. We can construct a curve \(z(t)\)
+between them as \(t \in [0,1]\), and each \(z_i(t)\) is a path connecting \(x_i\) and
+\(y_i\) within \(X_i\). Since each of the \(X_i\) is path connected, these maps \(z_i\)
+are continuous. Then, by theorem 19.6, the overall map \(z(t)\) is also
+continuous. 
+\end{proof}
+
+
+b) No. A counterexample is the "Topologist's sine curve", the set of points \(T =
+\{(x, sin(1/x)) | x \in (0,1]\}\cup\{(0,0)\}\).
+
+
+c) Yes, the composition of two continuous functions is itself continuous, and
+continuous maps preserve connectedness. 
+
+
+d) 
+\begin{proof}
+Take any two points. If they are in the same set in the collection, there is a
+path between them. If they are not in the same set in the collection then there
+is a path connecting the first point to a common point of all sets in the
+collection and another one connecting the common point to the second point, the
+joint path is still continuous and is a path connecting the point.
+\end{proof}
+\section{Problem 4}
+\label{sec:org43f65fb}
+
+Show that every compact subspace of a metric space is bounded in that metric and
+is closed. Find a metric space in which not every closed bounded subspace is
+compact. 
+
+
+\begin{proof}
+Let \(S\) be a compact subspace of the metric space \(X\). Pick a point \(x\in S\).
+Now, we consider the cover \(\{B(x,n)\ |\ n\in\mathbb{N}\}\), where \(B(x,n)\)
+denotes the open ball centered at \(x\) of radius \(n\). We then simply note that we
+will have a finite subcover, since \(S\) is compact. Choosing \(k\) as the largest
+index to the cover, such that \(B(x,k)\) is the largest ball in the cover, we see
+that \(S\) will be contained in \(B(x,k)\), and thus it is bounded. It must also be
+closed: otherwise, \(B(x,k-1)\cup(B(x,k)\setminus S\) would be a cover of \(S\), and
+it would not be compact. 
+\end{proof}
+
+As an example of a metric space in which not every closed bounded subspace is
+compact, take \(\mathbb{R}\) with the discrete metric \(d(x,y) = 1\) iff \(x\not =
+y\).
+\section{Problem 5}
+\label{sec:orgb3f60db}
+
+Show that if \(f: X\rightarrow Y\) is continuous, where \(X\) is compact and \(Y\) is
+Hausdorff, then \(f\) is a closed map (that is, \(f\) carries closed sets to closed
+sets). 
+
+
+\begin{proof}
+Let \(A\) be closed in \(X\). Then \(A\), by theorem 26.2, \(A\) is compact. \(f\) is
+continuous, so \(f(A)\) must be compact, since \(A\) is compact. Then, by theorem
+26.3, \(f(A)\) is closed. Since \(A\) was arbitrary, this holds for any closed set
+in \(X\). \(f\) is a closed map.
+\end{proof}
+\section{Problem 6}
+\label{sec:orge072810}
+
+Assume that \(\mathbb{R}\) is uncountable. Show that if \(A\) is a countable subset
+of \(\mathbb{R}^2\), then \(\mathbb{R}^2 \setminus A\) is path connected. [Hint: How
+many lines are there passing through a given point of \(\mathbb{R}^2\)?]
+
+
+\begin{proof}
+For any point there is an uncountable number of lines passing through it which
+do not intersect A. For any two points there is a pair of lines that do
+intersect each other but do not intersect the set A. So, both points are
+connected to the point of intersection of the lines, and, therefore, are
+connected.
+\end{proof}
+\end{document}

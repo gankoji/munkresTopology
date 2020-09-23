@@ -1,0 +1,217 @@
+#+TITLE: Homework Set 4
+#+author: Jacob Bailey
+#+OPTIONS: toc:nil
+#+LATEX_HEADER:\usepackage{amsthm}
+#+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage{amssymb}
+#+LATEX_HEADER:\usepackage{graphicx}
+#+LATEX_HEADER:\usepackage{fancyhdr}
+
+#+LATEX_HEADER:\pagestyle{fancy}
+#+LATEX_HEADER:\fancyhf{}
+#+LATEX_HEADER:\rhead{Homework 4, Math 532}
+#+LATEX_HEADER:\lhead{Jake Bailey}
+#+LATEX_HEADER:\rfoot{Page \thepage}
+#+LATEX_HEADER:\newtheorem{definition}{Definition}[section]
+
+* Problem 1
+
+Show that $X$ is Hausdorff if and only if the digaonal $\Delta = \{\
+x\times x\ |\ x\in X\}$ is closed in $X\times X$. 
+
+This problem was solved in Homework 3. Per Dr. Aubrey's instructions,
+we're skipping it this time around. 
+
+* Problem 2
+
+Show that the $T_1$ axiom is equivalent to the condition that for each
+pair of points in $X$, each has a neighborhood not containing the
+other. 
+
+#+begin_proof
+First, let the $T_1$ axiom hold, such that for our given topological
+space $X$, finite point sets are closed. Then, let $A = \{ x_1,
+x_2\}$. $A$ is closed by $T_1$, and thus $U = X\setminus A$ is
+open. We then consider the set $B = U\cup \{x_1\}$. $B$ is also open,
+since its complement, $X\setminus B = \{x_2\}$ is finite, and
+therefore closed. We can similarly construct a set $C = U\cup
+\{x_2\}$, which is again open. Thus, we have constructed neighborhoods
+of $x_1, x_2$ which do not contain the other point. 
+
+Conversely, let $\exists U,V\subseteq X$, $x_1\in U$, $x_2\in V$,
+$x_2\not\in U$, $x_1\not\in V$, and $U,V$ open. We can combine sets as
+$C = ((-\infty, x_2)\cup U \cup (x_2, \infty))\cap X$, and $D =
+((-\infty, x_1)\cup V \cup (x_1, \infty))\cap X$. Both of these are
+open, since unions of open sets are open. Their complements, $C^c,
+D^c$, are thus closed. They are also finite (single) point sets,
+effectively $C^c = \{x_2\}$ and $D^c = \{x_1\}$. Since $X$ is a
+topological space, finitely many unions of similarly constructed
+closed sets will also be closed. We can therefore construct any set of
+finitely many points which will be closed. Thus, $T_1$ holds.
+#+end_proof
+* Problem 3
+
+If $A\subseteq X$, we define the \textbf{boundary} of $A$ by the
+equation
+
+$\text{Bd}\ A = \overline{A}\cap\overline{(X\setminus A)}$.
+
+a) Show that Int $A$ and Bd $A$ are disjoint and that $\overline{A} =
+   \text{Int} A\cup\text{Bd}A$.
+
+#+begin_proof
+
+First, we note that Int $A$ is the union of all open sets contained
+within $A$, and that Int $A \subseteq \overline{A}$. If $A$ is open,
+then Int $A = A$, $\overline{(X\setminus A)} = (X\setminus A)$, and
+$(X\setminus A)\cap A = \emptyset$. If $A$ is closed, then $A =
+\overline{A}$, and $(X\setminus A)$ is open. Further, since Int $A
+\subset A \subseteq \overline{A}$, $\text{Int}\ A\cap \text{Bd}\ A =
+\emptyset$. Thus, Int $A$ and Bd $A$ are disjoint. 
+
+
+#+end_proof
+
+b) Show that Bd $A = \emptyset$ iff $A$ is both open and closed.
+
+#+begin_proof
+If $A$ is closed, then $A = \overline{A}$. If $A$ is open, then
+$X\setminus A$ is closed, and also equal to its closure. Then, Bd $A$
+= $\overline{A}\cap\overline{(X\setminus A)}$ = $A\cap(X\setminus A)$
+= $\emptyset$. 
+
+If Bd $A$ = $\emptyset$, then $\overline{A}\cap\overline{X\setminus A}
+= \emptyset$. This implies $A = \overline{A}$, and $(X\setminus A) =
+\overline{(X\setminus A)}$. Thus, $A$ is both closed and open. 
+#+end_proof
+
+c) Show that $U$ is open iff Bd $U = \overline{U}\setminus U$.
+
+#+begin_proof
+If $U$ is open, $X\setminus U$ is closed. Bd $U$ =
+$\overline{U}\cap\overline{(X\setminus U)} =
+\overline{U}\cap(X\setminus U) = (\overline{U}\cap X)\setminus
+(\overline{U}\cap U) = \overline{U}\setminus((U\cup U')\cap U) =
+\overline{U}\setminus U$.
+
+Next, let Bd $U$ = $\overline{U}\setminus U$. But, Bd $U$ =
+$\overline{U}\cap\overline{(X\setminus U)}$. We can rewrite the first
+equation as Bd $U$ = $(\overline{U}\cap X)\setminus (\overline{U}\cap
+U)$, which is equivalent to $\overline{U}\cap (X\setminus U)$, as
+shown in the preceding paragraph. Then, we have that
+$\overline{U}\cap\overline{(X\setminus U)} = \overline{U}\cap
+(X\setminus U)$, such that $\overline{(X\setminus U)} = (X\setminus
+U)$, and thus $(X\setminus U)$ is closed. $U$ is open. 
+
+#+end_proof
+
+d) If $U$ is open, is it true that $U = \text{Int}\ \overline{U}$? Justify
+   your answer. 
+
+By definition, Int $U$ is the union of all open sets contained in
+$U$. If $U$ is open, then Int $U$ = $U$. We know from theorem 17.6 of
+Munkres that $\overline{U} = U\cup U'$, where $U'$ is the set of all
+limit points of $U$. We also know that adding the limit points to the
+set creates a closed set, not an open one, so we conclude that $U$ is
+the "biggest" open set contained within $\overline{U}$. 
+
+* Problem 4
+
+Prove that for functions $F:\mathbb{R}\rightarrow\mathbb{R}$ the
+$\epsilon - \delta$ definition of continuity implies the open set
+definition. 
+
+#+begin_proof
+Assume $f$ is continuous. Thus, by the "$\delta - \epsilon$"
+definition of continuity, we have that $\forall \epsilon > 0, \exists
+\delta > 0$ such that if $|x - y| < \delta$, then $|f(x) - f(y)| <
+\epsilon$.
+
+Let $U\subseteq\mathbb{R}$ be open. Then, for any $y\in U$, $\exists
+x$ such that $f(x) = y$, and there are neighborhoods $y \in U_y$ and
+$x\in V_x$. Additionally, we can choose to let $U = \bigcup U_y$ for
+our chosen $y$, and since the $U_y$ are open (in the standard
+topology, assumed here), $U$ is also open. Finally, we note that all
+of the $V_x$ are open in the standard topology, so their union $V =
+\bigcup V_x$ is as well. But, by construction, $V = f^{-1}(U)$, so the
+preimage of an open set is open. 
+#+end_proof
+
+* Problem 5
+
+Let $a,b$, and $c$ be real numbers with $a\leq b\leq c$, and $a <
+c$. Let $X$ denote the set $[a,c]\cup\{b'\}$, where $[a,c] denotes a
+closed interval in the real line and $b'$ is a point not in
+$[a,c]$. Let $F$ be the family of subsets of $X$ consisting of all
+open subsets of $[a,c]$ together with all subsets of the form
+$(U\setminus \{b\})\cup\{b'\}$, where $U$ is an open subset of $[a,c]$
+\textbf{which contains $b$}. (Emphasis mine). 
+
+a) Show that $F$ is a basis for a topology on $X$.
+#+begin_proof
+For notation's sake, we split $F$ into two categories of subsets: $U$
+the open subsets of the interval $[a,c]$, and $W$, the collection of
+sets of the form $(U\setminus \{b\})\cup\{b'\}$. 
+
+We consider the two pieces of the definition of basis
+separately. Trivially, we note that elements of $F$ cover $X$, for if
+$x \in [a,c]$, $\exists U\in F$ such that $x \in U$, and if $x = b'$,
+$\exists W\in F$ such that $x \in W$.
+
+Next, we look to intersections of elements of $F$. Let $x \in X, x \in
+f_1\cap f_2$. Either $x \in [a,c]$, or $x = b'$. If $x \in [a,c]$,
+$f_1,f_2 \subseteq [a,c]$. Thus, $\exists f_3 \subseteq [a,c]$ such
+that $x \in f_3 \subseteq f_1\cap f_2$. 
+
+Finally, consider when $x = b'$. Then, $f_1, f_2 \in W$. We see that
+$\exists f_3 \in W$ such that $b'\in f_3 \subseteq f_1\cap f_2$, and
+we're done.
+#+end_proof
+
+b) Show that the map which interchanges $b$ and $b'$ and is the
+   identity elsewhere is a homeomorphism.
+
+#+begin_proof
+Clearly, the map $f:X\rightarrow X$ described above is a
+bijection. Further, we also see that $f = f^{-1}$. It is then enough
+to show that $f$ is continuous. Let $U\subseteq X$ be open. Then, we
+have four cases: $\{b, b'\}\cap U = \{\emptyset, \{b\}, \{b'\},
+\{b,b'\}\}$.
+
+Case 1: $f^{-1}(U) = U$. Done. 
+
+Case 2: $f^{-1}(U) = (U\setminus\{b\})\cup\{b'\} \in W$, which is open. 
+
+Case 3: $f^{-1}(U) = (U\setminus\{b'\})\cup\{b\} \subseteq [a,c]$,
+which is also open. 
+
+Case 4: $f^{-1}(U) = U$. Done. 
+#+end_proof
+
+c) Show that this topology on $X$ is not Hausdorff
+
+#+begin_proof
+
+Consider the two points $b$ and $b'$. By construction of $X$, any
+neighborhood of $b'$ must also contain some neighborhood of $b$, no
+matter how small the neighborhood (see my emphasis in the question
+text above). $X$ is not Hausdorff. 
+#+end_proof
+
+d) Show that if $f: X\rightarrow \mathbb{R}$ is continuous, then $f(b)
+   = f(b')$.
+
+#+begin_proof
+We'll assume $\mathbb{R}$ to have the standard topology here. Using
+the topological definition of continuity, we have that $\forall
+U\subseteq\mathbb{R}$, $U$ open, $V = f^{-1}(U)$ is also open.
+
+Any open set containing $b'$ also includes $(b - \epsilon,
+b)\cup(b, b+\epsilon)$, by construction of $X$. Assume $f(b) \not =
+f(b')$. Then $\exists U, U'$, $f(b)\in U, f(b')\in U'$, and $U\cap U'
+= \emptyset$, since $\mathbb{R}$ is Hausdorff. But, $f^{-1}(U)\cap
+f^{-1}(U') \not = \emptyset$, so $\exists x$ such that $f(x) \in U$
+and $f(x) \in U'$. Since $U\cap U' = \emptyset$, this implies that $x$
+maps to two distinct points in $\mathbb{R}$, a violation of the
+function rule. This is a contradiction, so $f(b) = f(b')$. 
+#+end_proof

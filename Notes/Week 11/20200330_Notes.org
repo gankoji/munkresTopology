@@ -1,0 +1,251 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{question}{Question}[section]
+#+LATEX_HEADER: \newtheorem{summary}{Summary}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[section]
+* Compact Subspaces of the Real Line <2020-03-30 Mon 09:03>
+
+#+begin_theorem
+The extreme value theorem: Let $f: X\rightarrow Y$ be continuous, where $Y$ is
+an ordered set in the order topology. If $X$ is compact, then $\exists c, d \in
+X$ such that $f(x) \leq f(x) \leq f(d)$. 
+#+end_theorem
+
+#+begin_proof
+Assume $f: X\rightarrow Y$ be continuous, $X$ compact, $Y$ ordered w/ the order
+topology. Let $A = f(X)$. The continuous image of a compact space is itself is
+compact, so $A$ is compact. Claim that $A$ has a largest element $M$ and a
+smallest element $m$. I.e. $m, M \in A$, so $\exists c, d \in X$ such that $f(c)
+= m, f(d) = M$.
+
+If $A$ has no largest element, then we can build an open cover which has no
+finite subcover: $\{(-\infty, a)\ |\ a\in A\}$ is an open cover of $A$. But $A$
+is compact, so it has a finite subcovering, say $\{ (-\infty, a_1), \ldots,
+(-\infty, a_n)\}$. Let $a = \text{max}\{a_1, \ldots, a_n\}$. This $a\in A$ is
+not a member of any $(-\infyt, a_i)$. This is a contradiction, since these sets
+were assumed to be a cover. So $A$ has a largest element. The argument for a
+smallest element is similar.  
+#+end_proof
+
+#+begin_definition
+Let $(X, d)$ be a metric space. Let $A\subseteq X, A\not = \emptyset$. For $x\in
+X$ define $d(x,A) = \text{inf}\{d(x,y)\ |\ y\in A\}$ as the distance from $x$ to
+$A$. 
+#+end_definition
+
+Note: for fixed $A$ this is a continuous function of $x$. Next, we want to find
+a sort of diameter of containment of the set $A$. We can do so by finding the
+supremum of the distance between any two points in the set. 
+
+ #+begin_definition
+ Let $(X, d)$ be a metric space, $A\subseteq X$, $A$ bounded. The diameter of
+ $A$ is: $\text{diam} A = \text{sup}\{d(x,y)\ |\ x,y\in A\}$. 
+ #+end_definition
+
+#+begin_lemma
+The Lebesgue Number Lemma: Let $A$ be an open covering of $(X,d)$, a metric
+space. If $X$ is compact, then $\exists \delta > 0$, called a Lebesgue number,
+such that every subset of $X$ with diameter less than $\delta$ is a subset of
+some member of $A$. 
+#+end_lemma
+
+Note: $\delta$ is the Lebesgue number of $A$. 
+
+#+begin_proof
+Let $A$ be an open covering of $(X,d)$, a compact metric space. If $X\in A$,
+then any positive number will work as a Lebesgue number (and we're done). So,
+now we assume $X\not\in A$. 
+
+Choose a finite subcollection of $A$ which will still cover $X$ (since $X$ is
+compact), say $\{A_1,\ldots, A_n\}$. Each $A_i$ is open, so its complement must
+be closed. Let $C_i = X\setminus A_i$ be these closed complements.
+
+Define $f:X\rightarrow\mathbb{R}$ as $f(x) = 1/n\sum\limits_{i=1}^n d(x,C_i)$.
+Essentially, we're taking the average distance of the closed sets to $X$. First,
+we claim that the average distance is not zero. Let $x \in X$, and choose $A_i$
+which contains $x$. Choose $\epsilon > 0$ so that $B_d(x,\epsilon)\subseteq
+A_i$. Thus, $d(x, C_i)\geq \epsilon$. So $f(x) \geq \epsilon /n. 
+
+Now, we have that $f$ is a continuous map from a compact set to an ordered one,
+so by the extreme value theorem, it has both a minimum and a maximum. Call the
+minimum $\delta$, and claim that $\delta$ is the Lebesgue number of $A$. 
+
+Let $B\subseteq X$ with diam $B < \delta$. Let $x_o \in B$. Then, $B\subseteq
+B_d(x_0, \delta)$. Now, $\delta \leq f(x_0) \leq d(x_0, C_m)$ where $d(x_0,
+C_m)$ is the largest of all the distances from $x_0$ to each $C_i$. 
+
+So, $B\subseteq B_d(X_0, \delta) \subseteq A_m = X\setminus C_m$. Thus, $\delta$
+is the Lebesgue number of $A$.  
+#+end_proof
+
+#+begin_definition
+A function $f:(X, d_x)\rightarrow (Y, d_y)$ between metric spaces is continuous
+at $x_0\in X$ if $\forall \epsilon > 0, \exists \delta > 0$ such that $\forall
+y\in X, d_x(x_0, y) < \delta \Rightarrow d_y(f(x_0), f(y)) < \epsilon$. This is
+a pointwise condition, where $\delta$ depends on both $\epsilon$ and $x_0$.  
+#+end_definition
+
+#+begin_definition
+A function $f:(X, d_x)\rightarrow (Y, d_y)$ between metric spaces is said to be
+uniformly continuous if $\forall \epsilon > 0, \exists \delta > 0, \forall x_0,
+x_1 \in X$ such that $d_x(x_0, x_1)<\delta\Rightarrow d_y(f(x_0), f(x_1)) <
+\epsilon$. 
+#+end_definition
+
+#+begin_theorem
+The Uniform Continuity Theorem: If $f:X\rightarrow Y$ is a continuous map from a
+compact metric space to a metric space, then that map is uniformly continuous. 
+#+end_theorem
+
+#+begin_proof
+Let $\epsilon > 0$, cover $y$ by sets $B(y, \epsilon/2)$ for $y\in Y$. Cover $X$
+by $A = \{ f^{-1}(B(y, \epsilon/2))\ |\ y\in Y\}$. Let $\delta$ be the Lebesgue
+number of $A$. If $x_1, x_2\in X$, and the $d(x_1, x_2) < \delta$, then
+diam$\{x_1, x_2\} < \delta$, and this set is a subset of one of the covering
+elements in $A$, i.e. $\{x_1, x_2\} \subseteq f^{-1}(B(y, \epsilon/2))$ for some
+$y\in Y$. Then, $d_y(f(x_1), f(x_2))\leq d(f(x_1), y) + d(f(x_2), y) <
+\epsilon/2 + \epsilon/2 = \epsilon$.  
+#+end_proof
+* Compact Subsets of the Real Line <2020-04-01 Wed 08:59>
+
+#+begin_definition
+$x\in X$ is isolated if $\{x\}$ is open in $X$. 
+#+end_definition
+
+#+begin_definition
+A set $A$ is countable if it is finite or countably infinite (i.e. there exists
+a bijection from the set to the naturals).  
+#+end_definition
+
+#+begin_theorem
+Let $X$ be a nonempty compact Hausdorff space. If $X$ has no isolated points,
+then $X$ is uncountable. 
+#+end_theorem
+#+begin_proof
+Step 1: Show that given $U\subseteq X$, open, nonempty, and taking $x\in X$,
+$\exists V\subseteq U$, nonempty, open, such that $x\not\in \overline{V}$. Let
+$y \in U$, $y \not\in x$. If $x \in U$ since $x$ is not isolated, $U \not
+\{x\}$, so $\exists y\in U, y\not = x$. If $x \not\nit U$, $y$ exists since
+$U\not = \emptyset$. 
+
+Choose $W_1, W_2$ open such that $x\in W_1$, $y\in W_2$. Then $V = W_2\cap U$ is
+the desired open set.  
+
+Step 2: Show that a function $f: \mathbb{Z}_+ \rightarrow X$ cannot be
+surjective. Then it follows that $X$ is uncountable. Let $x_n = f(n)$. Apply
+step 1 with $x_1 = x, U = X_1$ to obtain nonempty open $V_1$ such that $x_1
+\not\in \overline{V}_1$. We are going to apply this recursively, choosing
+$U_{n+1} = V_n$. In general, $V_n \subseteq V_{n-1}, x_n \not\in
+\overline{V}_n$. We have $\overline{V}_1 \superset \overline{V}_2 \ldots$, etc.
+Thus we have a descending sequence of nonempty closed sets.
+
+Because $X$ is compact, $\{\overline{V}_n\ |\ n\in\mathbb{N}\}$ is a collection
+of closed sets with the Finite Intersection Property, and $\exists
+x\in\cap\limits_n \overline{V}_n$. Then, $\forall n, x\not = x_n$ since
+$x\in\overline{V}_n$ and $x_n\not\in\overline{V}_n$.  
+#+end_proof
+
+One corollary of this: Every closed interval in $\mathbb{R}$ is uncountable. 
+* Limit Point Compactness <2020-04-01 Wed 09:37>
+#+begin_definition
+A space $X$ is said to be limit point compact if every infinite subset of $X$
+has a limit point. 
+#+end_definition
+
+#+begin_theorem
+Compactness implies limit point compactness. 
+#+end_theorem
+
+#+begin_proof
+Let $X$ be compact. Suppose $A\subseteq X$ has no limit point (i.e. $A$ is
+closed, since it contains all (zero) of its limit points). For each $a\in A$,
+choose open $U_a$ such that $a\in U_a$, and $(U_a\setminus \{a\})\cap A =
+\emptyset$. Notice $\{X\setminus A\}\cup\{U_a\ |\ a\in A\}$ is an open cover of
+$X$, so it has a finite subcover (because $X$ is compact). Notice $X\setminus A$
+does not intersect $A$, each $U_a$ contains only one point of $A$, and there can
+only be finitely many of them (finite subcover), so $A$ must be finite. Thus,
+for a subset of $X$ to not have a limit point, it must be finite, and all
+infinite subsets of $X$ must have a limit point.      
+#+end_proof
+
+Note that the converse (limit point compactness implies compactness) is not
+true! Example: Let $Y$ be a two point set in the indiscrete topology. Consider
+$X = \mathbb{Z}_+\times Y$. Every nonempty subset of $X$ has a limit point. But,
+$U_n = \{n\}\times Y$ is an open cover with a finite subcover. 
+* More Limit Point Compactness <2020-04-03 Fri 09:07>
+#+begin_definition
+Let $X$ be a well-ordered. Given $\alpha\in X$, let $S_{\alpha}$ denote
+$S_{\alpha} = \{ x\ |\ x\in X, x < \alpha\}$. This is the section of $X$ by
+\alpha.
+#+end_definition
+
+#+begin_lemma
+There exists a well-ordered set $A$ having largest element \Omega so each
+section $S_{\Omega}$ of $A$ by \Omega is uncountable, but evey other section of
+$A$ is countable. 
+#+end_lemma
+
+#+begin_proof
+Begin with an uncountable well ordered set $B$. Let $C = \{1,2\}\times B$ in the
+dictionary order topology. Some section of $C$ has to be uncountable. any
+$1\times b$ for $b\in B$ is less than any $2\times b$. A section by $\alpha =
+2\times b$ is uncountable. 
+Let \Omega be the least element of $X$ such that the section of $C$ by \Omega is
+uncountable. $A$ is the section of $C$ together with \Omega.  
+#+end_proof
+
+$S_{\Omega}$ is uncountable, well ordered, and every other section is countable,
+so it is called the minimum uncountable well ordered set. Denote $A =
+S_{\Omega}\cup\{\Omega\}$ by $\overline{S}_{\Omega}$. 
+
+#+begin_theorem
+If $A$ is a countable subset of $S_{\Omega}$, then $A$ has an upper bound in
+$S_{\Omega}$. 
+#+end_theorem
+
+Is $S_{\Omega}$ compact? Take $S_{\alpha}$ for $\alpha\in A$. $S_{\Omega}$ has
+no largest element, so no finite subcover of this cover. So $S_{\Omega}$ is not
+compact. $S_{\Omega}$ is limit point compact: Let $A\subseteq S_{\Omega}$ be
+infinite. Let $B\subseteq A$ be countably infinite. Let $b$ be an upper bound of
+$B$. So $B\subseteq [a_o, b]$ where $a_0 = \text{min} S_{\Omega}$. Since
+$S_{\Omega}$ has a least upper bound, $[a_0, b]$ is compact. So $B$ has a limit
+point in $[a_0, b]$. Then $x$ is also a limit point of $A$. So $S_{\Omega}$ is
+limit point compact.
+
+ #+begin_definition
+ Let $(x_n)_{n\in \mathbb{Z}_+}$ be a sequence of elements of the topological
+ space $X$. Let $n_1<n_2<\ldots < n_i < \ldots $ be an increasing sequence of
+ positive integers. Then $(y_i)_{n\in\mathbb{Z}_+}$ defined as $y_i = x_{n_i}$
+ is a subsequence of $(x_n)$.  
+ #+end_definition
+
+$X$ is sequentially compact if every sequence of points of $X$ has a convergent
+subsequence. 
+
+#+begin_theorem
+Let $X$ be a metrizable space. The following are equivalent:
+
+1) $X$ is compact.
+2) $X$ is limit point compact.
+3) $X$ is sequentially compact. 
+#+end_theorem
+
+#+begin_proof
+1) implies 2): done above!
+
+2) implies 3): Assume $X$ is limit point compact. Let $(x_n)_{n\in\mathbb{Z}_+}$
+   be a sequence of elements of $X$. Let $A = \{ x_n\ | n\in\mathbb{Z}_+\}$. If
+   $A$ is finite, then $\exists x$ such that $x = x_n$ for infinitely many
+   values of $n$. So $(X_n)$ has a constant and therefore convergent
+   subsequence. 
+
+   If $A$ is infinite, $A$ has a limit point $x$ by (2). Choose
+   $X_{n_1}\inB(x,1)$. Given $n_{i-1}, B(x,1/i)$ intersects $A$ infinitely
+   often. hoose $n_i > n_{i-1}$, such that $X_{n_i} \in B(x,1/i)$ Then $X_{n_1},
+   x_{n_2}, \ldots$ converges to $x$.
+#+end_proof

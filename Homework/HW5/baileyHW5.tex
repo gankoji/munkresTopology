@@ -1,0 +1,133 @@
+% Created 2020-03-02 Mon 21:35
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Homework 5, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\newtheorem{definition}{Definition}[section]
+\author{Jacob Bailey}
+\date{\today}
+\title{Homework Set 5}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Homework Set 5},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.0.50 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\label{sec:org4d2eab3}
+Let \(\mathbb{R}^{\infty}\) be the subset of \(\mathbb{R}^{\omega}\) consisting of
+all sequences that are "eventually zero," that is, all sequences \((x_1, x_2,
+\ldots)\) such that \(x_i \not =0\) for only finitely many values of \(i\). What is
+the closure of \(\mathbb{R}^{\infty}\) in \(\mathbb{R}^{\omega}\) in the box and
+product topologies? Justify your answer. 
+
+\section{Problem 2}
+\label{sec:org53c449b}
+Given sequences \((a_1, a_2, \ldots)\) and \((b_1, b_2, \ldots)\) of real numbers
+with \(a_i > 0\) for all \(i\), define \(h:
+\mathbb{R}^{\omega}\rightarrow\mathbb{R}^{\omega}\) by the equation
+
+\begin{equation}
+h((x\textsubscript{1}, x\textsubscript{2}, \ldots)) = (a\textsubscript{1x}\textsubscript{1} + b\textsubscript{1}, a\textsubscript{2x}\textsubscript{2} + b+2,\ldots).
+\end{equation}
+
+Show that if \(\mathbb{R}^{\omega}\) is given the product topology, \(h\) is a
+homeomorphism of \(\mathbb{R}^{\omega}\) and itself. What happens if
+\(\mathbb{R}^{\omega}\) is given the box topology? 
+
+\begin{proof}
+Let \(\mathbb{R}^{\omega}\) have the product topology, and \(h\) be as defined
+aboved. If we know the sequences of \(a_i\) and \(b_i\), we can define a function
+\(h^{-1}((x_1, x_2, \ldots)) = ((x_1 - b_1)/a_1, (x_2 - b_2)/a_2, \ldots)\). Since
+all \(a_i\) are assumed to be greater than zero, and thus nonzero, \(h^{-1}\) is
+obviously continuous. Since \(h\) is similarly continuous, we have that it is a
+bijection with a continuous inverse between \(\mathbb{R}^{\omega}\) and itself,
+i.e. a homeomorphism. 
+\end{proof}
+
+If we instead give \(\mathbb{R}^{\omega}\) the box topology, the result is
+unchaged. 
+
+\section{Problem 3}
+\label{sec:orgb6f4138}
+Prove that if \((X,d)\) is a metric space and \(X\) has the topology induced by \(d\),
+then \(d: X\times X\rightarrow [0, \infty)\) is continuous, where \(X\times X\) has
+the product topology. 
+
+\begin{proof}
+Let \(X\) be a metric space, with \(d\) a metric, and let \(X\times X\) have the
+product topology. Call the interval \(A = [0, \infty)\), and let \(U\subseteq A\) be
+an open subset. Then, \(d^{-1}(U)\) is of the form \(\bigcup\limits_{x\in X}
+\{x\}\times V_x\), where \(V_x \subseteq X\) is a an open subset of \(X\) whose
+points are less than \(a \in U\) (and greater than 0) in distance from the point
+\(x\). The union of each of these \(V_x\) is obviously \(X\), as is the union of the
+\(\{x\}\). \(X\times X\) is open in the product topology. We have considered all of
+the open sets in \(A\), as the point \(d = 0\) cannot be in an open set (I've
+assumed the standard topology in \(\mathbb{R}\)). \(d\) is continuous. 
+\end{proof}
+
+\section{Problem 4}
+\label{sec:orgff2bc0a}
+
+Show that \(\mathbb{R}_l\) and the ordered square satisfy the first countability
+axiom. (This does not, of course, imply that they are metrizable). 
+
+\begin{proof}
+Let \(x\in\mathbb{R}_l\). Then, we construct a countable collection of
+neighborhoods of \(x\) as \(V_n = [x - 1/n, x + 1/n)\), \(\forall n \in \mathbb{N}\).
+It is clear from the axiom of completeness (eq. the nested interval principle,
+the continuum hypothesis, etc) that for any neighborhood \(U\) of \(x\) we choose,
+we can always find an \(n \in \mathbb{N}\) such that \(\{V_i\}_{i \geq n}\) are all
+contained within \(U\). An almost identical argument holds for the ordered square. 
+\end{proof}
+
+\section{Problem 5}
+\label{sec:org3410e70}
+Show that the axiom of choice is equivalent to the statement that for any
+indexed family \(\{A_{\alpha}\}_{\alpha \in J}\) of nonempty sets, with \(J \not =
+\emptyset\), the Cartesian product \(\prod\limits_{\alpha\in J} A_{\alpha}\) is not
+empty. 
+
+\begin{proof}
+First, we define the axiom of choice as the statement that "For every indexed
+family \$$\backslash${A\textsubscript{\(\alpha\)}$\backslash$}\textsubscript{\(\alpha \in\) J} of nonempty sets, there exists an indexed
+family \((x_{\alpha})_{\alpha \in J}\) of elements such that \(x_{\alpha}\in
+A_{\alpha}\) for every \(\alpha \in J\)." 
+
+Next, we let \(J\) be an index, such that \(J \not = \emptyset\). Consider the
+Cartesian product \(\prod\limits_{\alpha\in J} A_{\alpha}\). By the axiom of
+choice above, we have that there exists a set of elements
+\((x_{\alpha})_{\alpha\in J}\), such that \(x_{\alpha}\in A_{\alpha}\) for each
+\(\alpha\). Thus, the Cartesian product cannot be empty. 
+\end{proof}
+
+\textit{Note:} The definition I use above for the axiom of choice can be found
+at \url{https://en.wikipedia.org/wiki/Axiom\_of\_choice}. It was significantly easier to
+use here than the version presented in Munkres' text. 
+\end{document}

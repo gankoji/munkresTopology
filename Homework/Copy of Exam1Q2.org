@@ -1,0 +1,47 @@
+The Finite complement topology
+
+U in T if either U = /empty set or X/U is Finite. 
+
+
+A) show T is a topo
+B) if A is infinite, show that the closure of A is X under T
+C) show that all T1 topos are finer than T
+
+D) something about maps that I don't remember already. Fuck.
+
+Ok so one thing to note here that I barfed on in the exam: the sets in this
+topology ARE NOT FINITE. THEIR COMPLEMENTS ARE FINITE. GET THAT THROUGH YOUR GOD
+DAMN SKULL JAKE.
+
+* Part A 
+Ok, so as I recall, I got through the first two steps: Obviously, \emptyset is
+in this topo because its in every topo. X is in the topo, because X\U is finite
+(its empty). Is that a valid argument? Is the emptyset finite? 
+
+Finite intersections: Much like the argument below, finite intersections of
+these sets is the same as taking finite unions of their complements, by
+DeMorgan's laws. Well, finite unions of finite sets are finite. End of argument. 
+
+The tough bit that I couldn't get over in the exam is arbitrary unions. Maybe an
+argument by induction would would. Let's take two sets within this topology, say
+U,V. Both Uc and Vc are finite (Uc = X\U, Vc = X\V). So, by this logic,
+shouldn't (X\(U\cup V)) also be finite? Of course it should, there's no way that
+it can be bigger than Uc or Vc. My error was in not realizing which sets I was
+using. So, effectively, arbitrary unions of topo elements relates to arbitrary
+intersections of finite sets (the complements, this is by DeMorgan's laws) which
+are also always going to be finite. 
+
+* Part B 
+Well, if A is an infinite set, it must be a part of the topology, so it's open.
+In this topology, the only closed sets are those whose complements are open
+(i.e. X and the finite sets). A finite set cannot contain an infinite one, so
+the only closed set which contains an infinite set A is X. X is the closure of
+A.
+
+* Part C
+By definition, a T1 topo has as closed sets the finite point sets. The FCT has
+the finite point sets as closed sets. Thus, any T1 topo must, at a minimum,
+contain all open sets of the FCT. 
+
+* Part D
+Welp, wish I could remember this damn question. 

@@ -1,0 +1,199 @@
+#+TITLE: Homework Set 7
+#+author: Jacob Bailey
+#+OPTIONS: toc:nil
+#+LATEX_HEADER:\usepackage{amsthm}
+#+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage{amssymb}
+#+LATEX_HEADER:\usepackage{graphicx}
+#+LATEX_HEADER:\usepackage{fancyhdr}
+
+#+LATEX_HEADER:\pagestyle{fancy}
+#+LATEX_HEADER:\fancyhf{}
+#+LATEX_HEADER:\rhead{Homework 7, Math 532}
+#+LATEX_HEADER:\lhead{Jake Bailey}
+#+LATEX_HEADER:\rfoot{Page \thepage}
+#+LATEX_HEADER:\newtheorem{definition}{Definition}[section]
+* Problem 1
+Let $f: X\rightarrow Y$; let $Y$ be compact Hausdorff. Then, $f$ is continuous
+if and only if the graph of $f$, $G_f = \{ x\times f(x)\ |\ x\in X\}$ is closed
+in $X\times Y$. [\textit{Hint:} If $G_f$ is closed and $V$ is a neighborhood of
+$f(x_0)$ then the intersection of $G_f$ and $X\times (Y\setminus V)$ is closed.]
+(You may assume the results of Exercise 7 on page 171). 
+
+#+begin_proof
+Two directions, first: If $f$ is continuous, then the graph of $f$, $G_f$, is
+closed in $X\times Y$. Let $f$ be continuous. Since $f$ is continuous and $Y$
+compact, $f$ carries closed sets to closed sets. Thus, the set $Y = \{f(x)\ |\
+x\in X\}$ is closed only if $X$ is closed, which it must be, and the graph
+itself is closed in the product topology. 
+
+Next: If the graph of $f$, $G_f$, is closed in $X\times Y$, then $f$ is
+continuous. We take the "hint" here, and note that since $G_f$ is closed, $A =
+G_f\cap X\times (Y\setminus V)$ is also closed, where $V$ is a neighborhood of
+$f(x_0)$. We also have, by exercise 7, that the projection $\pi_1: X\times
+Y\rightarrow X$ is a closed map.
+
+$A$ is the complement of $V$ and is closed, thus $V$ is open. Further, since the
+projection map is a closed map, we know that the projection of $A$ is also
+closed. Finally, since the projection of $A$ is closed, its complement (a
+neighborhood in $X$ of $x_0$) is open. The preimage under $f$ of an open set is
+open, and thus $f$ is continuous. 
+#+end_proof
+
+* Problem 2
+Let $(X,d)$ be a metric space, and let $A\subseteq X$ be nonempty. 
+
+a) Show that $d(x,A) = 0$ if and only if $x \in \overline{A}$. 
+#+begin_proof
+If $d(x,A) = 0$, then either $x$ is in $A$ or $x$ is a limit point of $A$. $x
+\in \overline{A}$. 
+
+If $x \in \overline{A}$, then either $x$ is in $A$, and thus $d(x,A) = 0$, or
+$x$ is a limit point of $A$, and similarly, $d(x,A) = 0$. 
+#+end_proof
+
+b) Show that if $A$ is compact, $d(x,A) = d(x,a)$ for some $a \in A$. 
+#+begin_proof
+This is simply the definition of the distance to a set. $d(x,A) =
+\text{inf}_{a\in A} d(x,a)$. 
+#+end_proof
+
+c) Define the \epsilon-neighborhood of $A$ in $X$ to be the set $U(A,\epsilon)
+= \{x\ |\ d(x,A) < \epsilon\}$. Show that $U(A,\epsilon)$ equals the union of
+the open balls $B_d(a, \epsilon)$ for $a\in A$. 
+
+#+begin_proof
+Assume $(X,d)$ a metric space, and $A\subseteq X$ nonempty. Consider the set $B
+= \bigcup\limits_{a\in A} B_d(a, \epsilon)$. Choose $x \in B$. Then, by
+construction, $d(x,a) < \epsilon$ for some $a \in A$. Clearly, $x\in U(A,
+\epsilon)$, and $B\subseteq U(A, \epsilon)$. 
+
+Next, consider $y\in U(A, \epsilon)$. By defintion, $d(y,A) =
+\text{inf}_{a\in A} d(y,a)$, so if we require $d(y,A) < \epsilon$,
+$\exists a\in A$ such that $d(y,a) < \epsilon$. Then, $y \in B_d(a, \epsilon)$,
+and $y\in B$. $U(A, \epsilon) \subseteq B$, and $U(A, \epsilon) = B$. 
+#+end_proof
+
+d) Assume that $A$ is compact; let $U$ be an open set containing $A$. Show that
+some \epsilon-neighborhood of $A$ is contained in $U$. 
+#+begin_proof
+
+#+end_proof
+e) Show that the result of (d) need not hold if $A$ is closed but not compact. 
+
+* Problem 3
+Recall that $\mathbb{R}_k$ denotes $\mathbb{R}$ in the $k$-topology. 
+
+a) show that $[0,1]$ is not compact as a subspace of $\mathbb{R}_k$. 
+
+Take the collection of sets $(1/n, 2)$ for all $n\in\mathbb{N}$, in addition to
+$\mathbb{R}\setminus K$. This collection covers the interval $[0,1]$, but
+contains no finite subcollection which contains 0. $[0,1]$ is not compact.  
+
+b) Show that $\mathbb{R}_k$ is connected. [\textit{Hint:} $(-\infty, 0)$ and
+$(0, \infty)$ inherit their usual topologies as subspaces of $\mathbb{R}_k$.]
+
+#+begin_proof
+Similar to the proof that $\mathbb{R}$ in the standard topology is connected, we
+cannot find a separation by open sets that covers the entire space, since 0 is a
+member of the space. I.e. $(-\infty, 0)$ and $(0, \infty)$ does not cover the
+space, since 0 is not included in the separation. 
+
+Let $A = (-\infty, a)$ and $B = (b, \infty)$. If $a < b$, the sets $A$ and $B$
+are disjoint, but do not cover $\mathbb{R}_k$. If $a > b$, the sets cover, but
+are not disjoint. If $a = b$, the sets are disjoint, but do not cover, as they
+do not contain the point $a$. 
+#+end_proof
+
+c) Show that $\mathbb{R}_k$ is not path connected. 
+
+#+begin_proof
+Here we offer a simple counterexample. Choose points 0 and 1. If there exists a
+path between these two, then the path $f$ is a continuous function from a
+compact connected space, and hence the the image must also be compact and
+connected. This is a contradiction with part a. 
+#+end_proof
+* Problem 4
+Show that a connected metric space having more than one point is uncountable. 
+
+#+begin_proof
+Let there be a bijection from $X$ to $\mathbb{Z}_+$, constructed from the metric
+$d$ as $x_0 \in X$, $f:X\rightarrow\mathbb{Z}_+$, $f(y) = d(x_0, y)$. Then, we
+can separate the image of this bijection into two open sets, those with odd and
+even distances from the point $x_0$. If $f$ is a bijection, then these two
+disjoint open sets cover $\mathbb{Z}_+$, and thus form a separation on $X$, a
+contradiction. 
+#+end_proof
+* Problem 5
+Let $X$ be a compact Hausdorff space; let $\{A_n\}$ be a countable collection of
+closed sets of $X$. Show that if each set $A_n$ has empty interior in $X$, then
+the union $\bigcup A_n$ has empty interior in $X$. [\textit{Hint:} Imitate the
+proof of theorem 27.7]. This is a special case of the \textit{Baire category}
+\textit{theorem.}
+
+#+begin_proof
+Let $X$ and $A_n$ be as above, and let each $A_n$ have empty interior. The
+interior of a set is the union of all open sets contained within the given set.
+Thus, each $A_n$ contains no open sets. 
+
+Let $U_0$ be a nonempty open set of $X$. It is enough to show that any such set
+cannot be contained in $A = \bigcup A_n$, i.e. $\exists x \in U_0$ such that $x
+\not\in A$. By assumption, $A_1$ has empty interior, so $U_0$ is not contained
+in $A_1$, and there exists $y_1 \in U_0$ such that $y_1\not\in A_1$. 
+
+Next, choose a nonempty open set $U_1\subset U_0$, such that
+$y_1\not\in\overline{U}_1$. We know that such a set exists because $U_0$ is open
+and $X$ is Hausdorff. 
+
+We can continue this process, i.e. given $U_{n-1}$ choose a point
+$y_n\in U_{n-1}$, $y_n\not\in A_n$ and a nonempty open set $U_n\subset U_{n-1}$,
+$y_n\not\in\overline{U}_{n-1}$. Because $X$ is compact, this nested collection
+of open sets will have nonempty intersection, i.e. $\bigcap U_n \not =
+\emptyset$. Finally, we choose $x \in \bigcap \overline{U}_n$. We have that
+$x\in U_0$ but not in any $A_n$, and thus not in $A$. $A$ has empty interior. 
+
+#+end_proof
+
+# first, we need the definition of interior: The interior of a set is the largest
+# open set contained within the original set. For a closed set A, the interior is
+# also the set minus its boundary, i.e. int A = A\setminus bd A.
+
+# so, the point of this theorem is that if each and every A_n has an empty
+# interior, then their union must also have an empty interior. Thus, we need to
+# show that somehow, because the underlying space is compact and Hausdorff, the
+# boundaries of these A_n can never add up to an open set (or cover one).
+
+# The hint to mimic the proof of 27.7 is confusing (that's the one we did in class
+# today: prove some property about sets in X, specifically that they can be split
+# because X is Hausdorff and there are no isolated points (aren't those the same
+# conditions?). Then, we show that for any function from the naturals to the
+# space, the function cannot be surjective. I have *zero* idea why the first part
+# was even necessary. Well, it looks like its used in the proof for part 2, so
+# that makes sense.
+
+# The question here is, what are the two steps that I'm trying to perform? It
+# makes sense that I would want to show that there exists a bijection from the
+# naturals to these A_n, but what do I need to prove first? Actually, that doesn't
+# make sense at all. I want to show that a union of countably many sets has an
+# empty interior.  
+
+# Office Hours 4/1/20: int(\bigcup A_n) = \bigcup (int A_n)? Maybe. Finite unions
+# of closed sets are closed, but maybe not countable unions.  The union of the
+# interiors is a subset of the interior of the union, easily shown. The other way
+# doesn't work. 
+
+# Step 1 of 27.7: for any nonempty open U\subseteq X, any x \in X, \exists
+# V\subseteq U such that x \not\in V for X nonempty compact Hausdorff).  apply step
+# 1 to U = int (\bigcup A_n), assume its nonempty and then look for a
+# contradiction.
+
+# New approach: construct a collection of U_n = X\setminus int(A_1)\cup\ldots\cup
+# int(A_n). Then, these U are closed and nested, so if each U_k is nonempty, their
+# intersection is nonempty. 
+
+# The intersection \bigcap (X\setminus C_n) (C_n the union of interiors) =
+# X\setminus \bigcup C_n = X\setminus \bigcup int(A_n) \not = \emptyset. 
+
+# Either x \in \bigcup int (A_n) or x \not\in \bigcup int(A_n). 
+
+

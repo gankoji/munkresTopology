@@ -1,0 +1,135 @@
+#+TITLE: Final Exam
+#+author: Jacob Bailey
+#+OPTIONS: toc:nil
+#+LATEX_HEADER:\usepackage{amsthm}
+#+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage{amssymb}
+#+LATEX_HEADER:\usepackage{graphicx}
+#+LATEX_HEADER:\usepackage{fancyhdr}
+
+#+LATEX_HEADER:\pagestyle{fancy}
+#+LATEX_HEADER:\fancyhf{}
+#+LATEX_HEADER:\rhead{Final Exam, Math 532}
+#+LATEX_HEADER:\lhead{Jake Bailey}
+#+LATEX_HEADER:\rfoot{Page \thepage}
+#+LATEX_HEADER:\newtheorem{definition}{Definition}[section]
+* Problem 1
+
+Show that the space $\mathbb{R}_l$ is not connected. 
+
+Take two sets, $(-\infty, 0)$ and $[0, \infty)$. The union of these two sets is
+indeed $\mathbb{R}_l$. Further, both of these sets are open in $\mathbb{R}_l$.
+Thus, together they form a separation in $\mathbb{R}_l$, and the space is
+therefore not connected. 
+
+* Problem 2
+
+Let $X$ be a topological space and let $Y$ be its one-point compactification.
+Show that if $X$ is connected and not compact, then $Y$ must be connected. 
+
+By definition, a one-point compactification is a compact Hausdorff space, and
+the difference of the compactification and the original set is a singe point.
+Assume that $X$ is connected and not compact. Further, assume that there exists
+a separation in $Y$, i.e. there exist two disjoint open sets, $U$ and $V$, whose
+union equals $Y$. One of these sets must contain the point $a = Y\setminus X$,
+let's say $V$ does. Then, $U\subset X$, and $W = V\setminus\{a\} \subset X$.
+Since $Y$ is the one-point compactification of $X$, we also have that $U\cup W =
+X$. By the Hausdorff nature of $Y$, we know that $\{a\}$ is closed, and thus $W$ is
+open. Thus, we have shown that if $Y$ contains a separation, so does $X$, and
+$X$ is not connected, a contradiction. $Y$ is connected.  
+
+* Problem 3
+
+Let $X$ be an uncountable set with the countable complement topology. 
+
+a) Is $X$ connected? Why or why not?
+
+Yes. There cannot exist two disjoint open sets whose union equals $X$. Any open
+set which is not $\emptyset$ or $X$ must have a countable complement, which by
+definition of the CCT is closed.  
+
+b) Does $X$ have the $T_1$ separation property? Why or why not?
+
+Yes, because finite point sets are countable, and thus closed in the CCT. 
+
+c) Is $X$ Hausdorff? Why or why not?
+
+No. There cannot exist two disjoint open sets which contain, respectively, two
+arbitrary points separately.  
+
+d) Is $X$ metrizable? Why or why not?
+
+No, because it is not regular. Theorem 40.3 (The Nagata-Smirnov metrization
+theorem) states that a space is metrizable if and only if it is both regular and
+has a basis that is countably locally finite. 
+
+e) Let $a \in X$ and define $A = X\setminus \{a\}$. Show that $a
+\in\overline{A}$.
+
+If $A$ is as defined above, then the smallest closed set that contains it is $X$.
+$a\in X$, thus it is in the closure.  
+
+f) Let $x_1, x_2, x_3,\ldots$ be a sequence in $X$ such that each $x_i\in A$.
+Show that the sequence does \textit{not} converge to $a$.
+
+I actually don't see a reason for this to be true. In the CCT, open sets (and
+thus neighborhoods) are huge, uncountably so. There are no small neighborhoods
+of the point $a$, and the space isn't Hausdorff, so why would an arbitrary
+sequence not be able to converge to $a$, even if it's not in the set $A$? It's
+in the closure of $a$, so it must be a limit point, and thus every neighborhood
+of it must intersect $A$ at some point other than $a$. If our sequence arrives,
+at some integer $n$, at that point, and remains there or gets closer to $a$ from
+then on, wouldn't the sequence have converged to $a$?  
+
+g) Is $X$ first countable? Why or why not? 
+
+Yes, because for each point $x\in X$, there exist at most countably many
+neighborhoods, and thus there is a countable collection of those neighborhoods
+which are all contained within the neighborhoods of $x$. 
+
+
+* Problem 4
+
+Prove that if $X$ is a Lindel \\"of space, then every uncountable subset of $X$ has a limit point. 
+
+A Lindel \\"of space is one for which every open covering contains a countable
+subcovering. A limit point of a set $A$ is one for which every neighborhood of
+said point intersects $A$ in some point other than itself. 
+
+#+begin_proof
+Let $A\subseteq X$ be uncountable, and assume that $A$ has no limit points.
+Then, every point in $A$ must be isolated. In order to cover this set, we would
+then need uncountably many open sets, for which no finite subcover exists. This
+is a contradiction of the assumption that the space $X$ is Lindel\\"of, and thus
+$A$ must have at least one limit point. 
+
+#+end_proof
+
+* Problem 5
+
+Let $A\subseteq X$. Suppose $r: X\rightarrow A$ is a continuous map such that
+$r(a) = a$ for each $a\in A$. If $a_0 \in A$, show that
+
+$r_*: \pi_1(X, a_0)\rightarrow \pi_1(A, a_0)$
+
+is surjective.
+
+Essentially, the task here is to show that the continuous map $r$, which is the
+identity for the subset $A$ of the space $X$, preserves the fundamental group of
+$X$ at the point $a_0$. As defined on page 333 of Munkres, the map $r_*$ is a
+homomorphism induced by the map $r$. Furthermore, from corollary 52.5, if $r$
+is a homeomorphism of $X$ with $A$ (trivially, it is), then $r_*$, the
+homomorphism induced by it, is an isomorphism. Hence, $r_*$ is surjective.   
+
+* Problem 6
+
+Show that any covering map $p: E\rightarrow B$ is an open map.
+
+By definition, a covering map $p$ is continuous, surjective, and for any open
+set $U \subseteq B$, the pre-image can be written as a union of disjoint open
+sets in $E$, where the restriction of $p$ to these disjoint open sets is a
+homeomorphism. 
+
+Since $p$ is a homeomorphism under these restrictions, it is a continuous
+bijection in both directions. Thus, $p^{-1}(U)$ is open, as well as
+$p(V_{\alpha})$. Since $p$ carries open sets to open sets, it is an open map. 

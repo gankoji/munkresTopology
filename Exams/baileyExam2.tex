@@ -1,0 +1,221 @@
+% Created 2020-04-08 Wed 16:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Exam 2, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\newtheorem{definition}{Definition}[section]
+\author{Jacob Bailey}
+\date{\today}
+\title{Exam 2}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Exam 2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{Problem 1}
+\label{sec:org28fe9cb}
+Let \(Y_1\) and \(Y_2\) be compact subspaces of a topological space \(X\). 
+
+a) Prove that the union \(Y_1\cup Y_2\) is compact if both \(Y_1\) and \(Y_2\) are
+compact. Give an example to show that the converse is false. 
+
+\begin{proof}
+Let \(Y_1\) and \(Y_2\) be compact. By definition, any covering of each of these
+sets has a finite subcover. Let \(A_1\) and \(A_2\) be the corresponding finite
+subcovers for arbitrary covers of each \(Y\). Then, \(A = A_1\cup A_2\) covers
+\(Y_1\cup Y_2\). Since the union of two finite sets is itself finite, \(A\) is a
+finite cover of \(Y_1\cup Y_2\), and thus the union is compact. 
+\end{proof}
+
+b) Does the result of part (a) together with the induction principle imply that
+a \textit{finite} union of compact subspaces is compact? Explain why, or find a
+counterexample. 
+
+Yes, because the union of finitely many finite sets is still itself finite. 
+
+c) Does the result of part (a) together with the induction principle imply that
+a \textit{countable} union of compact subspaces is compact? Explain why, or find
+a counter example. 
+
+No, because a countable union of finite sets could itself no longer be finite. A
+counterexample would be a collection of compact subspaces of \(\mathbb{R}\) of the
+form \([a, a+1], a\in\mathbb{Z}\). The countable union of these sets forms
+\(\mathbb{R}\), which is known to not be compact.  
+
+\section{Problem 2}
+\label{sec:org21f7b82}
+Let \(X_3 = \{a, b, c\}\) be a topological space containing exactly three points,
+and let \(X_4 = \{a, b, c, d\}\) be a topological space containing exactly four
+points. 
+
+a) Prove that if there is no open singleton in \(X_3\), then \(X_3\) is connected.
+
+\begin{proof}
+By assumption, no subset of \(X_3\) of the form \(\{x\}\) is open. Thus, our only
+options for open sets are the empty set, \(X_3\) itself, and sets of the form
+\(\{x_1, x_2\}\). Clearly, no combination of two \textit{distinct} sets of this
+form and/or the emptyset and/or \(X_3\) can contain all the points of \(X_3\), so
+\(X_3\) must be connected. 
+\end{proof}
+
+b) Is the following true? If \(X_3\) is connected, then there is no open singleton
+in \(X_3\).
+
+If \(X_3\) is connected, there exists no possible separation (two distinct open
+sets, whose intersection is the empty set) in \(X_3\). The only way to construct
+such a separation is with singletons, due to the three pointed nature of the
+set.  
+
+c) Is the following true? If there is no open singleton in \(X_4\), then \(X_4\) is
+connected. 
+
+No. \(\{a,b\}\) and \(\{c, d\}\) are a separation in \(X_4\) that does not require
+singletons for construction. \(X_4\) is not connected. 
+
+\section{Problem 3}
+\label{sec:org4839279}
+Let \(X = \mathbb{R}^{\omega}\) with the product topology. Let \(A\subseteq X\) be
+the subset \(A = [0,1]\times [0,2]\times [0,3]\times\ldots\) endowed with the
+subspace topology. Explain each answer below. 
+
+a) Is \(X\) metrizable? 
+
+Yes. See theorem 20.5, page 125 of Munkres. 
+
+b) Is \(X\) compact? 
+
+No. None of its constituents (\(\mathbb{R}\)) is compact, so
+the product cannot be either. 
+
+c) Is \(X\) sequentially compact? If not, construct a sequence in \(X\) that has no
+convergent subsequence. 
+
+No, since it is metrizable but not compact. The sequence \(\{0, \ldots x_i,
+\ldots 0 \ldots\}_{i\in\mathbb{Z}_+}\) for a given nonzero point \(x\) seems to fit
+the bill.
+
+d) Is \(X\) connected? 
+
+Yes, since its constituents are all connected. A path function on each
+\(\mathbb{R}\) can be found that is continuous, and the product of such continuous
+functions is continuous (theorem 19.6), so actually it's path connected.
+
+e) Is \(A\) metrizable?
+
+Yes. The Euclidean metric applies equally well to subspaces of \(\mathbb{R}\) as
+it does to all of \(\mathbb{R}\). 
+
+f) A is compact by the Tychonoff theorem. Is \(A\) sequentially compact? If not,
+construct a sequence in \(X\) that has no convergent subsequence. 
+
+\(A\) is sequentially compact, since it is compact and metrizable, by theorem
+28.2.
+
+g) Is \(A\) connected? 
+
+Yes, by a similar argument to the above for all of \(X\). That each constituent is
+a single connected interval is the main point. 
+
+
+\section{Problem 4}
+\label{sec:org7db0c63}
+Let \(X\) be \(\mathbb{R}\) with the countable complement topology. 
+
+a) Find the closure and the interior of \(Y = (0,\infty)\subseteq X\). 
+
+The closure is the smallest closed set which contains \(Y\). Since \([0,
+\infty)\) is not countable, it cannot be the complement of an open set (and thus
+not closed). Since it is uncountable, the next largest closed set (as long as
+we're subscribing to the continuum hypothesis, anyway) is \(\mathbb{R}\).
+\(\overline{Y} = \mathbb{R}\). 
+
+Next, the interior. The is the largest open set which is contained within \(Y\).
+Since any open set in the countable complement topology must either be the
+emptyset or \(\mathbb{R}\) minus some countable set, we conclude that the largest
+open set which is completely contained within \(Y\) is the empty set. \(\text{int}\
+Y = \emptyset\).
+
+b) Consider the map \(f: X\rightarrow X\) defined by \(f(x) = cos(x)\). Is \(f\)
+continuous on \(X\) with the countable complement topology? (\textit{Hint:} It may
+be helpful to know that the countable union of countable sets is countable.)
+
+Indeed, \(f\) is continuous, albeit vacuously. The range of \(f\) is actually \([-1,
+1]\), whose complement is obviously not countable, and the complement of any
+subset of it is also not countable. Thus, no subset of the range of \(f\) is open.
+Therefore, vacuously, for every open set  \(A \subseteq [-1, 1]\), \(f^{-1}(A)\) is
+also open. (Actually, \(\emptyset\) is open, but its preimage, also the empty set,
+is open). 
+
+c) Is \(X\) compact? (\textit{Hint:} Consider the cover
+\(\{U_k\}_{k\in\mathbb{Z}_+}\) where \(U_k =
+(\mathbb{R}\setminus\mathbb{Z}_+)\cup\{k\}\).)
+
+No. A finite subcover must contain finitely many \textit{finite sets}. No set
+which is open in this topology (aside from the empty set, which by definition
+covers nothing) is finite.
+
+d) Is \(X\) connected? 
+
+Yes. We require two \textit{distinct} sets (i.e \(A\cap B = \emptyset\)) whose
+union covers the space for a separation. 
+
+If we consider the complements, \((A\cap B)^c = \mathbb{R} = A^c\cup B^c\) by
+DeMorgan's laws, we see that this would require that we be able to form
+\(\mathbb{R}\) from the union of two countable sets (complements must be countable
+for \(A\) and \(B\) to be open). The union of countably many (2 is countable!)
+countable sets is itself countable, while \(\mathbb{R}\) is uncountable.
+
+
+\section{Problem 5}
+\label{sec:org4670bbe}
+
+Let \(X\) be a Hausdorff space, let \(C\) be a compact subset of \(X\), and let \(a\) be
+a point of \(X\) which is not in \(C\). Prove that there are disjoint open sets \(U\)
+and \(V\) with \(C\subseteq U\) and \(a\in V\).
+
+This is Lemma 26.4 of Munkres, on page 166. Proof is found on the preceding
+page, 165, as part of the proof of theorem 26.3. Below I present an excerpt from
+that proof that deals just with this lemma. 
+
+\begin{proof}
+Let \$X,C,\$ and \(a\) be as above. That is, \(a\) is in \(X\setminus C\). For each
+point \(c\in C\), let us choose disjoint neighborhoods \(U_c\) and \(V_c\) of the
+points \(a\) and \(c\), respectively. We know these exist since \(X\) is Hausdorff. 
+
+The collection \(\{V_c\ |\ c\in C\}\) is a covering of \(C\) by sets open in \(X\).
+Since \(C\) is compact, we know that finitely many of the \(V_c\) cover \(C\). Thus,
+we have that the open set \(V = V_{c_1}\cup \ldots \cup V_{c_n}\) contains \(C\),
+and it is disjoint from the open set \(U = U_{c_1}\cap \ldots \cap U_{c_n}\)
+formed by taking the intersection of the corresponding neighborhoods of \(a\).
+For if \(z\) is a point of \(V\), then \(z\in V_{c_i}\) for some \(i\), and hence
+\(z\not\in U_{c_i}\) by construction, and then \(z\not\in U\). 
+
+Thus, \(U\cap V = \emptyset\), \(a\in U\), and \(Y\subseteq V\). 
+\end{proof}
+\end{document}

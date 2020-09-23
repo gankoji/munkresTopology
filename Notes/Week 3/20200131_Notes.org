@@ -1,0 +1,117 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+* Lecture 7 <2020-01-31 Fri>
+
+The order topology vs subspace, continued
+
+From examples, we know that the product and subspace topologies
+"commute": the subspace topology on a product space is the same as the
+product topology on a subspace.
+
+The order topology, however, is a different story. It does not commute
+with other topology combinations. Starting to see these as operations
+on collections of sets. 
+
+Idea: Let $X$ be an ordered set $Y\subseteq X$. The order on $X$
+restricted to $Y$ makes $Y$ an ordered set. However, the resulting
+order topology on $Y$ may *not* be the same as the topology that $Y$
+inherits as a subspace of $X$. 
+
+** Example 1
+$Y = [0,1)\cup\{2\} \subseteq \mathbb{R}_{std}$.  
+
+$\{2\} = Y\cap(1,3)$ is open in the subspace topology.
+
+But $\{2\}$ is not open in the order topology on $Y$.
+
+** Example 2
+Let $I = [0,1]$. Dictionary order on $I\times I$ is the restriction of
+the dictionary order on $\mathbb{R}\times\mathbb{R}$. But, the
+dictionary order topology is not the same as the subspace topology on
+$I\times I$. For example, consider the set
+$\{\frac{1}{2}\}\times(\frac{1}{2},1]$. This set is open in the
+subspace topology, but *not* in the order topology on $I\times
+I$. This is because the subspace topology can create the closed
+interval via intersection with the endpoints of I, but the order
+topology does not contain half open intervals except for the
+endpoints ("corners of the box"). 
+
+*** Key note
+In the dictionary order topology, half open intervals are only allowed
+when they contain the *maximum* or *minimum* points of the underlying
+set. That doesn't mean "the line on which the max x/y/z coordinate
+lies", that mean the singular extrema (points).
+
+** Convexity and Commutativity of Order and Subspace
+
+#+BEGIN_definition 
+
+Given an ordered set $X$, $Y\subseteq X$ is said to be convex if
+$\forall a,b \in Y$, we have that $(a,b) \subseteq Y$.
+
+#+END_definition
+
+#+BEGIN_theorem
+
+Let $X$ be an ordered set in the order topology. Let $Y\subseteq X$ be
+convex. Then the order topology on $Y$ is the same as the topology $Y$
+inherits as a subspace of $X$.
+
+#+END_theorem
+#+BEGIN_proof
+
+Let $Y$ be a convex subset of $Y$. Consider $(a, \infty) \subseteq
+X$. Then $(a,\infty)\cap Y = \{x\ |\ x \in Y\ \text{and}\ x > a\}$ is an
+open ray of $Y$. Consider the case where $a \not\in Y$. Then either
+$a$ is a lower bound of $Y$, or $a$ is an upper bound of $Y$, since
+$Y$ is convex.
+
+More succinctly, if $a$ is lower bound, then $a\cap Y = Y$, and if $a$
+is an upper bound, $a\cap Y = \emptyset$. Similarly, $(-\infty, a)\cap
+Y = \emptyset$ ($a$ is a lower bound), or $(-\infty, a)\cap Y = Y$
+($a$ is an upper bound).
+
+We know that open rays form a subbasis for a topology. In this case,
+they form a subbasis for the subspace topology on $Y$. Each of these
+is open in the order topology, so the order topology contains the
+subspace topology (because the subbasis elements are open in the OT).
+
+To prove the converse, note that any open ray of $Y$ is the
+intersection of an open ray of $X$ and the set $Y$. Since the open
+rays of $Y$ are a subbasis for the order topology on $Y$ (see previous
+paragraph), this topology is contained in the subspace topology.
+
+The missing part of this proof is for the case of rays where $a \in
+Y$. If you intersect an open ray with $Y$, no matter what, you get an
+open set of $Y$. My last question is, do the union of those two
+raysets give you back $Y$ if $a \in Y$? No, but you can choose all $a$
+in $Y$, because a subbasis does not have to be a partition (open sets
+can overlap).
+
+#+END_proof
+
+* Closed sets and limit points
+ *Limit points* are my old nemesis from analysis. 
+
+A set $A \subseteq X$ is closed if $X\setminus A$ is open.
+
+
+** Example 1
+
+$[a,b] \subseteq \mathbb{R}$. $\mathbb{R} \setminus [a,b] = (-\infty,a)\cup (b,\infty)$. 
+
+** Example 2
+
+\{ (x,y)\ |\ x\geq 0, y\geq 0\}
+
+** Finite Complement Topology
+
+On $\mathbb{R}$, the finite complement topology takes as basis
+elements all sets $U$ such that $\mathbb{R}\setminus U$ is finite (as
+in finite number of points). Use DeMorgan's laws to prove this is a
+topology. Think about whether this is a topology, or its complement.
+

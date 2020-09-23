@@ -1,0 +1,154 @@
+% Created 2020-02-08 Sat 17:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Homework 3, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\newtheorem{definition}{Definition}[section]
+\author{Jacob Bailey}
+\date{\today}
+\title{Homework Set 3}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Homework Set 3},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.0.50 (Org mode 9.3.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\label{sec:org7fad07b}
+
+Let \(A,B\), and \(A_{\alpha}\) denote subsets of a topological space
+\(X\). Determine which of the following equations hold; if an equality
+fails, give an example, and determine whether one of the inclusions
+\(\supset\) or \(\subset\) holds.
+
+\begin{enumerate}
+\item \(\overline{A\cap B} = \overline{A}\cap\overline{B}\)
+\item \(\overline{\cap A_{\alpha}} = \cap\overline{A_{\alpha}}\)
+\item \(\overline{A\setminus B} = \overline{A}\setminus\overline{B}\)
+\end{enumerate}
+
+
+\subsection{\(\overline{A\cap B} = \overline{A}\cap\overline{B}\)}
+\label{sec:org90fa121}
+This equality holds. The intersection of two closed sets equals a
+closed set, since the complement of an intersection is the union of
+the complements, and the union of open sets is open in a topological
+space. Since the two sides have the same interiors and are both
+closed, they are equal. 
+
+\subsection{\(\overline{\cap A_{\alpha}} = \cap\overline{A_{\alpha}}\)}
+\label{sec:org84de64e}
+This equality also holds. Argument is the same as above, since
+topologies are closed under arbitrary unions of open sets (thus the
+arbitrary intersection of closed sets is closed). 
+
+\subsection{\(\overline{A\setminus B} = \overline{A}\setminus\overline{B}\)}
+\label{sec:orgab81722}
+This does not hold. \(\overline{A}\setminus\overline{B} \subset
+\overline{A\setminus B}\). Consider, as example, \(A = (0,2)\) and \(B =
+(1,2)\). Then \(\overline{A\setminus B} = [0,1]\), but
+\(\overline{A}\setminus\overline{B} = [0,1)\).
+
+\section{Problem 2}
+\label{sec:org3c1e84f}
+Show that every order topology is Hausdorff. 
+
+\begin{definition}
+A topological space is said to be \textbf{Hausdorff} if, for any two
+distinct points \(x_1, x_2 \in X\), there exist open neighborhoods \(U_1,
+U_2\) of\(x_1, x_2\) respectively, such that \(U_1\cap U_2 = \emptyset\).
+\end{definition}
+
+\begin{proof}
+Let \(X\) be a topological space with the order topology, and let \(x,y
+\in X\), distinct, such that \$ x < y \$. Then, we have two cases:
+
+Case 1: \(\exists z\) such that \(x < z < y\). Then, \(U = (-\infty, z)\) is
+open and contains \(x\). Similarly, \(V = (z, \infty)\) is open and
+contains \(y\). But, by construction, \(U\cap V = \emptyset\). 
+
+Case 2: Such a \(z\) does not exist (i.e. \(y\) is the "next point" in the
+order after \(x\)). Then, We modify \(U\) and \(V\) as \(U = (-\infty, y) =
+(-\infty, x]\), and \(V = (x, \infty) = [y, \infty)\). Clearly, we still
+have that \(U\cap V = \emptyset\). 
+
+Since our \(x,y\) are assumed distinct and arbitrary, this shows that
+\(X\) must be Hausdorff. 
+\end{proof}
+
+\section{Problem 3}
+\label{sec:org3acfebd}
+Show that \(X\) is Hausdorff iff the diagonal \(\Delta = \{ x\times x\ |\
+x \in X\}\) is closed in \(X\times X\).
+
+\begin{proof}
+Let \(X\times X\) have the product topology, and let \(\Delta\) be closed
+in \(X\times X\). Choose \((x,y)\) in \(X\times X\), such that \(x \not =
+y\). \((x,y) \in X\times X\setminus\Delta\). Then, there exist open
+neighborhoods \(U\) and \(V\) of \(x\) and \(y\), respectively, such that
+\((U\times V)\cap \Delta = \emptyset\), since \(X\times X\setminus\Delta\)
+is open, due to \(\Delta\)'s closedness. Consequently, \(U\cap V =
+\emptyset\), for if there was an \(x\) such that \(x \in U\cap V\), \((x,x)
+\in (U\times V) \subseteq \Delta\), a contradiction. \(X\) is Hausdorff.
+
+Next, let \(X\) be Hausdorff. Take \(x\) and \(y\) as above, such that
+\((x,y) \in X\times X\setminus\Delta\). Since \(X\) is Hausdorff, we have
+that \(\exists U,V \ni U\cap V = \emptyset\), \(U,V\) open. Since the
+product topology is closed under unions, we can build up all of
+\(X\times X\setminus\Delta\) via these neighborhoods, for all distinct
+\(x,y \in X\). Thus, \(X\times X\setminus\Delta\) is open, and its
+complement, \(\Delta\), is therefore closed. 
+\end{proof}
+
+\section{Problem 4}
+\label{sec:org1a1cbe3}
+In the finite complement topology on \(\mathbb{R}\), to what point or
+points does the sequence \(x_n = 1/n\) converge? 
+
+The sequence converges (in the topological sense, i.e. for every open
+neighborhood \(U\) of \(x\), \(\exists N \in \mathbb{N}\) such that \(\forall
+n > N, x_n \in U\)) to every point of \(\mathbb{R}\). This is because the
+open neighborhoods must all be infinite (and, in fact, of infinite
+measure), since they contain all but finitely many points of
+\(\mathbb{R}\). Thus, for any point in \(\mathbb{R}\), we can find a
+suitable \(N\) such that \(x_N\) is in its neighborhood.
+
+\section{Problem 5}
+\label{sec:org799cb9b}
+Consider the lower limit topology on \(\mathbb{R}\) and the topology
+given by the basis of Exercise 8 in Section 13. Determine the closures
+of the intervals \(A = (0, \sqrt{2})\) and \(B = (\sqrt{2}, 3)\) in these
+two topologies.
+
+In the lower limit topology, \(\overline{A} = [0, \sqrt{2})\) and
+\(\overline{B} = [\sqrt{2}, 3)\). 
+
+In the topology defined in exercise 8 of section 13, both are the
+same.
+\end{document}

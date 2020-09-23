@@ -1,0 +1,197 @@
+% Created 2020-01-28 Tue 20:47
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Homework 2, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\author{Jacob Bailey}
+\date{\today}
+\title{Homework Set 2}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Homework Set 2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\label{sec:org51d5529}
+
+If \(L\) is a straight line in the plane, describe the topology \(L\)
+inherits as a subspace of \(\mathbb{R}_l\times\mathbb{R}\) and as a subspace of
+\(\mathbb{R}_l\times\mathbb{R}_l\). In each case, it is a familiar topology.
+
+To be precise, we define a line \(L\) as a set of points \(L = \{ x,y \in
+\mathbb{R}^2 |\ y = mx + b, m,b \in \mathbb{R}\}\). In both cases, the
+basis elements for the subspace topology \(L\) inherits can be defined
+as \(\{ B_l\times B \cap L \}\).
+
+As a subspace of \(\mathbb{R}_l\times\mathbb{R}\), we have basis
+elements of the form \([x_1,x_2)\times(y_1,y_2)\cap L\). Since a line is
+one dimensional, we can parameterize \(x,y\) as functions of a dummy
+\(t\), such that \(y(t) = mx(t) + b\), and we are left with a one
+dimensional set with the lower limit topology, i.e. \(\mathbb{R}_l\).
+
+The same holds for \(L\) as a subspace of
+\(\mathbb{R}_l\times\mathbb{R}_l\).
+
+\section{Problem 2}
+\label{sec:org64e86f4}
+
+Let \(I = [0,1]\). Compare the product topology on \(I\times I\), the
+dictionary order topology on \(I\times I\), and the topology \(I\times I\)
+inherits as a subspace of \(\mathbb{R}\times\mathbb{R}\) in the dictionary order
+topology.
+
+The product topology on \(I\times I\) is finer than the the dictionary
+order topology on \(I\times I\), which is both finer and coarser than
+the subspace topology inherited from \(\mathbb{R}\times\mathbb{R}\) in
+the dictionary order topology.
+
+\begin{proof}
+
+
+\textit{Product Topology is finer than the Dictionary Order Topology:}
+The basis for the product topology is sets of the form
+\(((a,b),(c,d))\), \(a,b,c,d \in I\). Basis elements of the dictionary
+order topology are also intervals, with endpoints \((p_1,p_2)\) and
+\((q_1,q_2)\): \(B = \{ (a,b), a,b \in I\ |\ (p_1 < a \leq q_1)\
+\text{or}\ (p_1 = a)\ \text{and}\ (p_2 < b \leq q_2)\}\).
+
+Clearly, since both elements are drawn from the same set \(I\), we can
+find a slice \(B\) in the dictionary order topology which contains any
+given element \(((a,b),(c,d))\) of the product topology, since elements
+from the product topology do not contain their endpoints. The product
+topology is finer than the dictionary order topology.
+
+\textit{Subspace topology is equal to the DOT on $I\times I$:} This
+follows from the definition of the subspace topology and the
+definition of the DOT on \(I\times I\). First, the subspace topology:
+
+The subspace topology on \(I\times I\) is that topology having as basis
+the collection of sets \(D_I = \{ d\cap I | d \in D\}\) where \(D\) is the
+basis of the DOT in \(\mathbb{R}^2\). These are intervals \((p,q) \in I\)
+with the dictionary ordering. The basis of the DOT on \(I\times I\) is
+exactly this collection of sets, as well. The two are equal, and thus
+comparable.
+\end{proof}
+
+\section{Problem 3}
+\label{sec:orga639e58}
+
+Let \(Y\) be a subspace of \(X\). Prove that if \(A\) is closed in \(Y\) and
+\(Y\) is closed in \(X\), then \(A\) is closed in \(X\).
+
+\begin{proof}
+
+
+Let \(A\) be closed in \(Y\). Then its complement, \(A_C = Y \setminus A\),
+is open in \(Y\) (and thus an element of the topology on \(Y\)). Since \(Y\)
+is a subspace of \(X\), \(A_C\) is also an element in the topology of
+\(X\). Topologies are closed under arbitrary unions, so the set \(A_{CX}
+= A_C \cup (Y\setminus X)\) is also in the topology. Thus, the
+complement of \(A\) in \(X\) is open, and therefore \(A\) is closed in \(X\).
+\end{proof}
+
+\section{Problem 4}
+\label{sec:orga88aeeb}
+
+Show that if \(A\) is closed in \(X\) and \(B\) is closed in \(Y\), then
+\(A\times B\) is closed in \(X\times Y\).
+
+\begin{proof}
+
+
+Let \(A\) be closed in \(X\), and \(B\) be closed in \(Y\). Then, \(A_C =
+A\setminus X\) is an element of the topology on \(X\), and \(B_C =
+B\setminus Y\) is an element of the topology on \(Y\). Since the product
+topology on \(X\times Y\) is inherited from the sets \(X\) and \(Y\), the
+set \(A_C \times B_C\) is in this product topology. This set is also the
+complement of \(A \times B\) in \(X\times Y\). Thus, \(A\times B\) is closed
+in \(X\times Y\).
+\end{proof}
+
+\section{Problem 5}
+\label{sec:orgcc3b45a}
+
+Show that the dictionary order topology on the set
+\(\mathbb{R}\times\mathbb{R}\) is the same as the product topology
+\(\mathbb{R}_d\times\mathbb{R}\) where \(\mathbb{R}_d\) denotes
+\(\mathbb{R}\) in the discrete topology. Compare this topology with the
+standard topology on \(\mathbb{R}^2\).
+
+\begin{proof}
+
+
+First, recall that a basis element in the dictionary order topology on
+\(\mathbb{R}\times\mathbb{R}\) is an interval of the form \((p,q), p,q \in
+\mathbb{R}\times\mathbb{R}\).
+
+Next, we note from theorem 15.1 we have that the basis for the product topology
+on \(\mathbb{R}_d\times\mathbb{R}\) is the collection of sets \(D = \{ b\times
+c\ |\ b\in B, c\in C\}\), where \(B,C\) are the bases of the discrete and standard
+topologies on \(\mathbb{R}\), respectively.
+
+To the proof. Let \(A = ({x},(a,b))\) be a basis element of
+\(\mathbb{R}_d\times\mathbb{R}\). Choose \(p_1, p_2 \in \mathbb{R}\times\mathbb{R},
+p_1 = (a_1,b_1), p_2 = (a_2,b_2)\). Then, let \(a_1 = a_2 = x\). Clearly, then, the
+interval \((p_1,p_2) = ({a_1},(b_1,b_2))\), which is equivalent to our chosen \(A\)
+from the product topology. Thus, for any element of the topology on
+\(\mathbb{R}_d\times\mathbb{R}\), we can find an equivalent element in
+\(\mathbb{R}\times\mathbb{R}_{DOT}\).
+\(\mathbb{R}_d\times\mathbb{R}\subseteq\mathbb{R}\times\mathbb{R}_{DOT}\).
+
+Next, let \(p = (a,b)\) and \(q = (c,d)\). Then, we can choose elements of the basis
+of \(\mathbb{R}_d\times\mathbb{R}\) as \(r_i = ({p + i\epsilon}, (b,d))\). By
+construction, \(r_i \in C\), the basis on \(\mathbb{R}_d\times\mathbb{R}\). Let \(R =
+\bigcup\limits_{i \in J}r_i = (p,q)\). Topologies are closed under arbitrary
+unions, so \(R \in C\) as well. But \(R = (p,q)\), so \((p,q) \in
+\mathbb{R}_d\times\mathbb{R}\), and
+\(\mathbb{R}\times\mathbb{R}_{DOT}\subseteq\mathbb{R}_d\times\mathbb{R}\).
+Therefore, \(\mathbb{R}\times\mathbb{R}_{DOT} = \mathbb{R}_d\times\mathbb{R}\).
+\end{proof}
+
+Next, we prove that \(\mathbb{R}_d\times\mathbb{R}\) is strictly finer than
+\(\mathbb{R}^2_{std}\).
+
+\begin{proof}
+
+
+Let \(A = ({x},(a,b))\) be a basis element of \(\mathbb{R}_d\times\mathbb{R}\).
+Choose \(c < x < d, c,d \in\mathbb{R}\), and let \(S = ((c,d),(a,b))\). Clearly, \(S
+\in \mathbb{R}^2_{std}\), by construction, and also \(A \subset S\).
+\(\mathbb{R}_d\times\mathbb{R}\) is finer than \(\mathbb{R}^2_{std}\).
+
+However, we cannot go the other way. Topologies are only closed under finite
+intersections, and we cannot make the set \(A\) by any finite number of
+intersections of sets of the form of \(S\), due to the completeness of the reals
+(equivalently, the nested interval principle).
+
+Thus, \(\mathbb{R}_d\times\mathbb{R}\) is strictly finer than
+\(\mathbb{R}^2_{std}\).
+\end{proof}
+\end{document}

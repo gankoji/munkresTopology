@@ -1,0 +1,210 @@
+% Created 2020-02-26 Wed 09:39
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{summary}{Summary}[section]
+\newtheorem{corollary}{Corollary}[section]
+\author{Jake Bailey}
+\date{\today}
+\title{Math 532 Notes}
+\hypersetup{
+ pdfauthor={Jake Bailey},
+ pdftitle={Math 532 Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{More on the Product Topology}
+\label{sec:org48a1491}
+
+Sidenote: looks like I missed out some discussion on the metric topology last
+week when I was out before the exam. 
+
+\begin{theorem}
+Let \(f: A\rightarrow \prod\limits_{\alpha \in J} X_{\alpha}\) be given by \(f(a) =
+(f_{\alpha}(a))_{\alpha \in J}\) where \(f_{\alpha}:A\rightarrow X_{\alpha}\) for
+each \(\alpha\). Let \(\prod X_{\alpha}\) have the product topology. Then the
+function \(f\) is continuous iff each \(f_{\alpha}\) is continuous. 
+\end{theorem}
+\begin{proof}
+Suppose \(U_{\beta}\) is open in \(X_{\beta}\). Then \(\pi_{\beta}^{-1}(U_{\beta})\)
+is a subbasis element for the product topology on \(\prod X_{\alpha}\). So
+\(\pi_{\beta}: \prod X_{\alpha} \rightarrow X_{\beta}\) is continuous if \(\prod
+X_{\alpha}\) has the product topology. 
+
+Suppose \(f:A\rightarrow\prod\limits_{\alpha \in J}X_{\alpha}\) is continuous.
+Then \(f_{\alpha} = (\pi_{\alpha}\cdot f)(a)\) is a composition of continuous
+functions, so is itself continuous. 
+
+Suppose each \(f_{\alpha}\) is continuous for \(\alpha \in J\). It suffices to show
+that the preimage of any subbasis element is open. Such a set has the form
+\(\pi_{\beta}^{-1}(U_{\beta})\) for some \(U_{\beta}\) open in \(X_{\beta}\). So
+\$f\textsuperscript{-1}(\(\pi\)\textsubscript{\(\beta\)}\textsuperscript{-1}(U\textsubscript{\(\beta\)})). Note: \(f_{\beta} = \pi_{beta}\cdot f\). So
+\(f^{-1}_{\beta}(S) = f^{-1}(\pi_{\beta}^{-1}(S)\). Thus, we have that
+\(f^{-1}_{\beta}(U_{\beta}) = f^{-1}(\pi_{\beta}^{-1}(U_{\beta}) =
+f^{-1}_{\beta}(U_{\beta})\), which is a known continuous function. Thus, the
+preimage of \(U_{\beta}\) is open, and \(f\) is continuous. 
+\end{proof}
+\subsection{Example}
+\label{sec:orgc1938e7}
+Let \(\mathbb{R}^{\omega} = \prod\limits_{n \in \mathbb{Z}_+}X_n\) where \(X_n =
+\mathbb{R}\) for \(n \in \mathbb{Z}_+\). Define \(f:
+\mathbb{R}\rightarrow\mathbb{R}^{\omega}\) as \(f(t) = (t,t,t,\ldots)\). Note: each
+\(f_n(t) = t\) is continuous in the standard topology on \(\mathbb{R}\). By the
+previous theorem, if we give \(\mathbb{R}^{\omega}\) the product topology, then
+\(f\) is continuous. But, \(f\) is \textbf{not} continuous in the box topology. Consider
+the set \(B = (-1, 1)\times(-1/2, 1/2)\times(-1/3, 1/3)\times\ldots\). 
+
+We claim that \(f^{-1}(B)\) is not open in \(\mathbb{R}\). If \(f^{-1}(B)\) were open
+then given \(x_0 \in f^{-1}(B), \exists \delta > 0\) such that \((x_0 - \delta,
+x_0 + \delta)\subseteq f^{-1}(B)\). Consider \(x_0 = 0\). Then if the preimage is
+open, \(\exists \delta > 0\) such that \((-\delta, \delta) \subseteq
+f^{-1}(B)\). Then, \(\forall n\), \(f_n((-\delta, \delta)) \subseteq (-1/n, 1/n)\).
+But \(f((-\delta, \delta)) = (-\delta, \delta)\), for all \(n\). This is impossible,
+and thus a contradiction. \(f^{-1}(B)\) is not open. 
+
+This demonstrates that the box topology is not a good candidate for working with
+curves in infinite dimensions. Basically, this motivates the funky definition
+for the product topology in infinite dimensions. 
+
+\section{The Metric Topology}
+\label{sec:org1547bec}
+\begin{definition}
+A metric on a set \(X\) is a function \(d:X\times X\rightarrow \mathbb{R}\) such
+that 
+
+\begin{enumerate}
+\item \(d(x,y) \geq 0, \forall x,y \in X, d(x,y) = 0\text{iff} x = y\).
+\item \(d(x,y) = d(y,x)\).
+\item \(d(x,z) \leq d(x,y) + d(y,z)\).
+\end{enumerate}
+\end{definition}
+
+\(B_d(x,\epsilon) = \{ y \in X\ |\ d(x,y) < \epsilon\}\). \((a,b) \subseteq
+mathbb{R}\) is equivalent to the ball \(B((a+b)/2, (b-a)/2)\). 
+\begin{definition}
+If \(d\) is a metric on a set \(X\), then the collection of all \$\(\epsilon\)\$-balls
+\(B_d(x,\epsilon)\) for all \(x\in X, \epsilon > 0\) is a basis for a topology on
+\(X\) called the metric topology induced by \(d\). 
+\end{definition}
+
+Here we see that the standard topology on the reals is the same as the metric
+topology on the reals induced by the standard metric \(d(x,y) = |x - y|\). This is
+also the same as the order topology on the reals.
+
+Given any set \(X\), we can always define a metric as \(d(x,y) = 1\) if \(x \not = y\)
+and \(0\) otherwise. Note: \(B(x,\epsilon) = \{ y\in X\ |\ d(x,y) < \epsilon\}\),
+which for this case would be \textbf{only} \(x\). This induces the discrete topology.
+
+\begin{definition}
+If \(X\) is a topological space, \(X\) is said to be \textbf{metrizable} if there
+exists a metric \(d\) on \(X\) which induces the topology of \(X\). A \textbf\{metric
+space\} is a metrizable space \(X\) together with a metric \(d\) which induces the
+topology of \(X\). 
+\end{definition}
+
+\begin{definition}
+\(A\subseteq X\), a metric space, is bounded if \(\exists M > 0\) such that
+\(d(a_1,a_2) < M, \forall a_1,a_2 \in A\). 
+
+If \(A\) is nonempty and bounded, then diam \(A = \text{sup}\{ d(a_1, a_2)\ |\ a_1,
+a_2 \in A\}\). 
+\end{definition}
+
+We can always bound a metric and get the same topology. 
+\begin{definition}
+If \(X\) is a metric space with metric \(d\), define \(\vec{d}: X\times
+X\rightarrow\mathbb{R}\) as \(\vec{d}(x,y) = min\{ d(x,y), 1\}\). Then \(\vec{d}\)
+is a metric that induces the same topology as \(d\). \(\vec{d}\) is called the
+\textbf{standard bounded metric} corresponding to \(d\). 
+\end{definition}
+
+\section{More on the metric topology \textit{<2020-02-26 Wed 08:57>}}
+\label{sec:orgb517c71}
+\begin{definition}
+Let \(\vec{x} = (x_1,\ldots, x_n) \in \mathbb{R}^n\). The \textbf{norm} of
+\(\vec{x}\), \(||\vec{x}|| = \sqrt{x_1^2 + \ldots + x_n^2}\). The \textbf\{Euclidean
+metric\} on \(\mathbb{R}^n\) is \(d(\vec{x}, \vec{y}) = \sqrt{(x_1 - y_1)^2 +
+\ldots + (x_n - y_n)^2}\). The \textbf{square metric} is \(\rho(\vec{x},\vec{y}) =
+\text{max}\{|x_1 - y_1|, \ldots, |x_n - y_n|\}\). 
+\end{definition}
+\begin{lemma}
+Let \(d, d'\) be two metrics on \(X\). Let \(T, T'\) be the topologies they induce.
+Then \(T'\) is finer than \(T\) iff \(\forall x \in X, \forall \epsilon > 0\),
+\$\(\exists\) \(\delta\) > 0 \$ such that \(B_{d'}(x,\delta) \subseteq B_d(x,\epsilon)\).
+\end{lemma}
+\begin{proof}
+Let \(T'\) be finer than \(T\). Given a basis element \(B_d(x,\epsilon)\) of \(T\), then
+there exists a basis element \(x \in B' \subseteq B_d(x,\epsilon)\). Then, within
+\(B'\) we can find \(B_{d'}(x,\delta)\) centered at \(x\), with \(\delta > 0\).
+
+Conversely, suppose the \(\epsilon-\delta\) holds. Given a basis element \(B\) of
+\(T\) containing \(x\). Within this element we can find \(B_d(x,\epsilon) \subseteq
+B\). Then, by assumption, \(\exists \delta > 0\) such that \(B_{d'}(x,\delta)
+\subseteq B_d(x,\epsilon)\). So \(T'\) is finer than \(T\). 
+\end{proof}
+
+\begin{theorem}
+The topologies on \(\mathbb{R}^n\) induced by the Euclidean metric and the square
+metric are the same, and they both give the product topology.
+\end{theorem}
+\begin{proof}
+By "algebra", \(\rho(x,y) \leq d(x,y) \leq \sqrt{n}\rho(x,y)\). Then, we simply
+apply the above Lemma to show that we can always subset one into the other,
+since their elements are always at most a finite different in size.
+
+Next, we show that each basis element \(B = (a_1,b_1)\times\ldots\times(a_n,b_n)\)
+in the product topology is open in both metrics (and the converse).  
+\end{proof}
+The next question we have to ask ourselves is: "How can we put a metric on
+\(\mathbb{R}^{\omega}\)?" Maybe, we can try \(d(x,y) =
+(\Sum\limits_{i=1}^{\infty}(x_i - y_i)^2)^{1/2}\), or \(\rho(x,y) =
+\text{sup}\{|x_i - y_i|: n\in\mathbb{N}\}\). But, these won't work. The
+difficulty is that we want a metric which induces the product topology. 
+
+\section{The Uniform Metric/Topology}
+\label{sec:org20a5f00}
+\begin{definition}
+Given any indexed set \(J\), let \(\mathbb{R}^J\) be the set of all functions from
+\(J\) to \(\mathbb{R}\). (So \(\mathbb{R}^{\omega}\) is all countable sequences of
+reals). Given \((x_{\alpha})_{\alpha\in J}\), \((y_{\alpha})_{\alpha\in
+J}\in\mathbb{R}^J\), define a metric \$\overline{\rho} as follows:
+\(\overline{\rho}(x,y) = \text{sup}\{\overline{d}(x_{\alpha}, y_{\alpha})\ |\
+\alpha\in J\}\), where \(\overline{d}\) is the bounded metric. This metric
+\(\overline{\rho}\) is called the \textbf{Uniform Metric} on \(\mathbb{R}^J\), and the
+topology it induces is called the \textbf{Uniform Topology}.
+\end{definition}
+\begin{theorem}
+The uniform topology on \(\mathbb{R}^J\) is finer than the product topology, and
+coarser than the box topology. These three are different if \(J\) is infinite.
+\end{theorem}
+\begin{proof}
+Suppose \(\prod U_{\alpha}\) is open in the product topology (even better, assume
+it's a basis element). Let \(\alpha_1, \ldots, \alpha_n\) be the indices so that
+\(U_{\alpha} \not = \mathbb{R}\). Let \(x \in \prod U_{\alpha}\). Pick, for each \(i,
+(1\leq i\leq n)\), choose \(\epsilon_i > 0\) such that
+\(B_{\overline{d}}(x_{\alpha_i}, \epsilon_i)\subseteq U_{\alpha_i}\).
+\end{proof}
+\end{document}

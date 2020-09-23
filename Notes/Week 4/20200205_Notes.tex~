@@ -1,0 +1,275 @@
+% Created 2020-02-07 Fri 09:45
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{summary}{Summary}[section]
+\newtheorem{corollary}{Corollary}[section]
+\author{Jake Bailey}
+\date{\today}
+\title{Math 532 Notes}
+\hypersetup{
+ pdfauthor={Jake Bailey},
+ pdftitle={Math 532 Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Closed Sets and Limit Points \textit{<2020-02-05 Wed 09:04>}}
+\label{sec:orgbc1335c}
+
+Recall that a set \(A\) is closed iff its complement \(X\setminus A\) is
+open.
+
+\(int(A)\) [The interior of A] is the union of all open sets contained in \(A\). 
+
+\(cl(A)\) [The closure of A] is the intersection of all closed sets
+containing \(A\).
+
+\begin{theorem}
+Let \(Y\) be a subspace of \(X\), \(A \subseteq Y\). The closure of \(A\) in
+\(Y\) equals \(cl(A) \cap Y\).
+\end{theorem}
+
+\begin{definition}
+Two sets \(A,B\) \textbf{intersect} if their intersection is not empty,
+i.e. \(A \cap B \not= \emptyset\).
+\end{definition}
+
+\begin{theorem}
+Let \(A \subseteq X\). Then, \(x \in cl(A)\) iff every open set containing
+\(x\) intersects \(A\). Also, if the topology of \(X\) is given by a basis,
+\(x \in cl(A)\) iff every basis element of \(B\) containing \(x\) intersects \(A\).
+\end{theorem}
+
+WEIRD MOMENT: Munkres doesn't mention this, but we worked it through
+in class. Need to add the requirement/assumption that \(x\in X\) in
+order for this theorem to work.
+
+\subsection{Example}
+\label{sec:orgf7e00e5}
+
+\(X = \mathbb{R}_{std}, A = (0,1]\). Then, \(cl(A) = [0,1]\).
+
+\(B = \{ 1/n\ |\ n \in \mathbb{N}\}\). Then, \(cl(B) = \{0\}\cup B\).
+
+\(cl(\mathbb{Q}) = \mathbb{R}\).
+
+\(\overline{\mathbb{R}\setminus\mathbb{Q}} = \mathbb{R}\).
+
+Let \(Y = (0,1] \subseteq \mathbb{R}\), \(A = (0, 1/2) \subseteq
+Y\). Closure of \(A\) in \(\mathbb{R}\) is \([0,1/2]\). Closure in \(Y\) is
+\(Y\cap \overline{A} = (0,1/2]\).
+
+\subsubsection{Sidenote}
+\label{sec:orgf0d30e8}
+I noticed this morning, as I was furiously trying to update my config
+to get it up to speed for notetaking (since I goofed and didn't sync
+my changes from the desktop last night), that the laptop has code
+completion in elisp (and I'm suspecting, probably elsewhere). Diff the
+configs and see what's different, since I'm missing that on both the
+work and home pcs. 
+
+\subsection{Limit points}
+\label{sec:org82ebaac}
+\begin{definition}
+If \(X\) is a topological space, \(A\subseteq X\), \(x \in X\), then \(x\) is
+a limit point of \(A\) if every open neighborhood of \(x\) intersects \(A\)
+in some point other than \(x\) itself. 
+\end{definition}
+
+Limit points of \(A\) may not be in \(A\), but they also could be. It
+tells us about the structure of \(A\) if it contains all of its limit
+points.
+
+Note: \(U\) is an open neighborhood of \(x\) iff \(U\) is open and \(x \in
+U\).
+
+\subsubsection{Examples of limit points}
+\label{sec:org237a79c}
+\(A = (0,1]\). Here, 0 is a limit point of \(A\). So is every point in
+\(A\).
+
+\(B= \{ 1/n\ |\ n\in\mathbb{N}\}\). 0 is a limit point of \(B\). Points of
+\(B\) are not limit points. Note that the "open neighborhoods" of a
+point should come from some underlying space, not just the set under
+consideration. 0 is the only limit point. 
+
+Note: \(x\) is a limit point of \(A\) iff \(x \in
+\overline{A\setminus\{x\}}\).
+
+\subsection{The ambitious theorem \textit{<2020-02-05 Wed 09:41>}}
+\label{sec:orgc05e0d7}
+\begin{theorem}
+Let \(A \subseteq X\), \(X\) a topological space. Let \(A'\) be the set of
+limit points of \(A\). Then, \(\overline{A} = A\cup A'\).
+\end{theorem}
+
+\begin{proof}
+Inclusion in both directions. 
+
+As observed earlier, \(A \subseteq \overline{A}\). Also, by definition,
+every limit point of \(A\) is in \(\overline{A}\), since a limit point has
+its open neighborhoods intersect \(A\), and the closure points also have
+open neighborhoods intersect \(A\). Thus, \(A\cup A' \subseteq \overline{A}\) is
+obvious.
+
+Suppose \(x \in \overline{A}\). If \(x \in A\), then done. Suppose \(x \ni
+A\). \(x \in \overline{A}\), so every open neighborhood \(U\) of \(x\)
+intersects \(A\). Let \(y \in U\cap A\). \(y\not = x\), since \(y \in A\). So,
+\(x\) is a limit point, and thus \(x \in A'\). We've proven both cases, so
+\(\overline{A} \subseteq A\cup A'\).
+\end{proof}
+
+If a point is in the closure of a set, it is either \textit\{in the set
+itself\}, or it its \textit{a limit point} of it. There are no other
+possibilities.
+
+\section{Closed Sets Again, and maybe Hausdorff Spaces? \textit{<2020-02-07 Fri 09:00>}}
+\label{sec:org51e9a74}
+\begin{definition}
+If \(X\) is a topological space, \(A\subseteq X\), \(x \in X\) then \(x\) is a
+limit point of \(A\) if every neighborhood of \(x\) intersects \(A\) in a
+point other than \(x\) itself.
+
+I.e. \(\forall U\) open with \(x \in U\), \((U\setminus\{x\})\cap A
+\not=\emptyset\).
+\end{definition}
+
+\begin{theorem}
+Let \(A\subseteq X\), \(A'\) a set of limit points of \(A\). Then
+\(\overline{A} = A\cup A'\).
+\end{theorem}
+
+\begin{corollary}
+A subset \(A\) of a topological space is closed iff \(\overline{A} =
+A\). (This holds iff \(\overline{A} \subseteq A\) iff \$ A' \subseteq A\$.
+\end{corollary}
+
+\subsection{Prepping for Hausdorff Spaces}
+\label{sec:orgfd06573}
+Hausdorff property is important for convergence of sequences.
+
+Consider a one point set in \(\mathbb{R}\), say
+\(\{x_0\}\). \(\overline{\{x_0\}} = \{x_0\}\).
+
+So one point sets are closed in \(\mathbb{R}\), but this is not true in
+general. This is a convenient property of \(\mathbb{R}\).
+
+Another convenient property of \(\mathbb{R}\), is that any sequence
+which converges does so to only one point. In arbitrary topological
+spaces, sequences may converge to more than one point. 
+
+\begin{definition}
+The traditional definition of convergence depends on a metric. A
+sequence \(x_n\) converges to \(x\) if, \(\forall \epsilon \in \mathbb{R}\),
+\(\exists N \in \mathbb{N}\) such that for \(n > N\), \(|x_n - x| <
+\epsilon\).
+\end{definition}
+
+However, this definition doesn't do us any good if the space we're
+considering doesn't have a metric. 
+
+\begin{definition}
+Topological definition of convergence. In a topological space \(X\) we
+say that the sequence $\backslash${x\textsubscript{n}$\backslash$}\textsubscript{n \(\in\) \mathbb{N}} converges to \(x \in
+X\) if for every open neighborhood \(U\) of \(x\), \(\exists N \in
+\mathbb{N}\) such that \(\forall n > N\), \(x_n \in U\).
+\end{definition}
+
+\subsubsection{Example}
+\label{sec:org203924e}
+Consider the topological space \((X, T)\), \(X = \{ a, b, c\}\), and \(T =
+\{\emptyset, X, \{b\}, \{a, b\}, \{b, c\}\}\). Consider the sequence
+\(\{x_n\}\) where \(x_n = b, \forall n\). Does this sequence converge to
+\(b\)? Yes, there is always a neighborhood of \(b\) within which \(x_n\)
+lies. It also converges to \(a\), since there is no open neighborhood of
+\(a\) which does not contain \(b\) (same for \(c\)). 
+
+\subsection{Introducting Hausdorff Spaces}
+\label{sec:orgffdd391}
+\begin{definition}
+A topological space \(X\) is called a Hausdorff space if, for any two
+distinct points \(x_1, x_2 \in X\), there exist open neighborhoods \(U_1,
+U_2\), of \(x_1, x_2\) respectively, such that \(U_1\cap U_2 = \emptyset\).
+\end{definition}
+
+This is one of the separation axioms? Why is it an axiom? Are we
+\textbf{assuming} this to be true about \(\mathbb{R}\)? Is this
+equivalent to the axiom of choice, or completeness? This condition is
+stronger than the statement that finite point sets are closed (which
+is also called the \(T_1\) axiom). 
+
+Asked in class, turns out these are sort of misnamed as axioms, and
+really are just definitions. Not on the same level as AoC, the bedrock
+on which much of modern mathematics lies. 
+
+\begin{theorem}
+Let \(X\) be a topological space satisfying the \(T_1\) axiom. Let
+\(A\subseteq X\). Then \(x\) is a limit point of \(A\) iff every
+neighborhood of \(x\) contains infinitely many points of \(A\).
+\end{theorem}
+
+For a finite set in a \(T_1\) space, there cannot exist any limit
+points, since \(A\) doesn't have infinitely many points. This leads
+directly to \(A\) being closed, though, since it vacuously contains all
+of its limits points (which don't exist).
+
+\begin{proof}
+First, if every neighborhood of \(x\) contains infinitely many points of
+\(A\), then every neighborhood of \(x\) must contain at least one other
+point of \(A\) than \(x\). \(x\) is then a limit point. 
+
+Next, we consider \(x\) as a limit point of \(A\), with \(X\) as above. By
+contradiction, assume that there exists a neighborhood \(U\), open in
+\(X\), and \(B = U\cap A\setminus \{x\} = \{x_1, x_2,\ldots,x_n \}\) is
+finite. Consider \(C = X\setminus B\), which is an open neighborhood of
+\(x\). Now, \(D = U\cap C\) is also open, and contains \(x\). By
+construction, this set \(D\) has empty intersection with \(A\setminus
+\{x\}\). This is a contradiction, since \(x\) was assumed to be a limit
+point. Thus, every open neighborhood of \(x\) intersects \(A\) at
+infinitely many points.
+\end{proof}
+
+\begin{theorem}
+Let \(X\) be a Hausdorff topological space. Then, any sequence
+\(\{x_n\}_{n\in\mathbb{N}}\) converges to at most one point \(x \in X\).
+\end{theorem}
+
+\begin{proof}
+Let \(\{x_n\}\) be a sequence of points in \(X\) which converges to
+\(x\). Let \(x'\) be an element of \(X\), \(x' \not= x\). Let \(U\) and \(V\) be
+disjoint open neighborhoods of \(x\) and \(x'\), respectively. Then, by
+definition of convergence, there exists some large, finite integer N
+such that \(x_n \in U\), \(\forall n > N\). Since \(U\) and \(V\) are
+disjoint, these points cannot be in \(V\), and thus the sequence cannot
+converge to \(x'\).
+\end{proof}
+
+\begin{definition}
+In a Hausdorff space, the unique point to which a convergent sequence
+converges is called \textbf{the limit}. 
+\end{definition}
+\end{document}

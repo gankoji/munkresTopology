@@ -1,0 +1,100 @@
+#+TITLE: Homework Set 10
+#+author: Jacob Bailey
+#+OPTIONS: toc:nil
+#+LATEX_HEADER:\usepackage{amsthm}
+#+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage{amssymb}
+#+LATEX_HEADER:\usepackage{graphicx}
+#+LATEX_HEADER:\usepackage{fancyhdr}
+
+#+LATEX_HEADER:\pagestyle{fancy}
+#+LATEX_HEADER:\fancyhf{}
+#+LATEX_HEADER:\rhead{Homework 10, Math 532}
+#+LATEX_HEADER:\lhead{Jake Bailey}
+#+LATEX_HEADER:\rfoot{Page \thepage}
+#+LATEX_HEADER:\newtheorem{definition}{Definition}[section]
+* Problem 1
+Show that if $h, h': X\rightarrow Y$ are homotopic and $k, k':Y\rightarrow Z$
+are homotopic, then $k\circ h$ and $k'\circ h'$ are homotopic.
+
+There exist two homotopies $H: X\times I\rightarrow Y$ between $h$ and $h'$, and
+$K:Y\times I\rightarrow Z$ between $k$ and $k'$. Consider the map $F: X\times
+I\rightarrow Z$ such that $F(x,t) = K(H(x,t),t)$. Clearly, this is a homotopy
+between $k\circ h$ and $k'\circ h'$. 
+
+* Problem 2
+Let $\alpha$ be a path in $X$ from $x_0$ to $x_1$; let $\beta$ be a path in $X$
+from $x_1$ to $x_2$. Show that if $\gamma = \alpha * \beta$, then $\hat{\gamma}
+= \hat{\alpha}*\hat{\beta}$.
+
+$$\hat{\gamma}([f]) = [\overline{\alpha *
+\beta}]*[f]*[\overline{\beta}*\overline{\alpha}]$$
+
+$$ = [\overline{\beta}*\overline{\alpha}]*[f]*[\alpha * \beta]$$
+
+$$ = [\overline{\beta}]*[\overline{\alpha}]*[f]*[\alpha]*[\beta]$$
+
+$$ = [\overline{\beta}]*\hat{\alpha}([f])*[\beta]$$
+
+$$ = \hat{\beta}\circ \hat{\alpha}([f]).$$
+
+* Problem 3
+Let $x_0$ and $x_1$ be points of the path-connected space $X$. Show that
+$\pi_1(X, x_0)$ is abelian if and only if for every pair $\alpha$ and $\beta$ of
+paths from $x_0$ to $x_1$, we have $\hat{\alpha} = \hat{\beta}$.
+
+For every $\alpha, \beta, \hat{\alpha} = \hat{\beta}$ iplies that for every
+$\alpha, \beta, f$, a loop based at $x_0, \hat{\alpha([f])} =
+\hat{\beta([f])}$. Further, this implies that
+$[f]\circ[\alpha\circ\beta] = [\alpha\circ\beta]\circ[f]$. 
+
+Note that $\alpha\circ\beta$ is an arbitrary loop based at $x_0$ and passing
+through $x_1$. So, if the group of the path homotopy classes of loops based at
+$x_0$ is Abelian, then the right hand side expression holds for arbitrary
+$\alpha, \beta$, and $f$, therefore for every $\alpha, \beta, \hat{\alpha} =
+\hat{\beta}$. 
+
+Vice versa, if for every $\alpha, \beta, \hat{\alpha} = \hat{\beta}$, then we
+have shown that the group is commutative when at least one of the terms is a
+path homotopy class of a loop passing through $x_1$. So, take arbitrary $[f],
+[g] \in \pi_1(X, x_0)$ and take any path $\alpha$ from $x_0$ to $x_1$. Then,
+$g\circ\alpha\circ\overline{\alpha}$ is a loop based at $x_0$ passing through
+$x_1$. Then, $[f]\circ[g\circ\alpha\circ\overline{\alpha}] = 
+[g\circ\alpha\circ\overline{\alpha}]\circ[f]$. 
+
+* Problem 4
+Show that the mapa of Example 3 on page 338 is a covering map. Generalize to the
+map $p(z) = z^n$.
+
+Example 3: $p: S^1\rightarrow S^1$ given by $p(z) = z^2$ where $S^1$ is
+considered as a subspace of the complex plane. 
+
+Consider a general map $p(z) = z^n$. If $U = \{z = e^{i\phi}\ |\ \phi\in
+(a,b)\subseteq (0, 2\pi)\}$. Then, $p^{-1}(U) = \{z = e^{i\phi}|\ \phi\in (a/n +
+2\pi k/n, b/n + 2\pi k/n), k\in \overline{0, n-1}\}$ iis the union of $n$ open
+intervals in $S^1$ such that the restriction of $p$ onto each such interval is a
+homeomorphism of the interval with $U$. This is also the case if we restrict
+$\phi$ to $(-\pi, \pi)$. Overall, ever point of $s^1$ has such an open
+neighborhood. 
+
+* Problem 5
+Show that if $X$ is path connected, the homomorphism induced by a continuous map
+is independent of base point, up to isomorphism of the groups involved. More
+precisely, let $h: X\rightarrow Y$ be continuous, with $h(x_0) = y_0$ and
+$h(x_1) = y_1$. Let $\alpha$ be a path in $X$ from $x_0$ to $x_1$, and let
+$\beta = h\circ \alpha$. Show that 
+
+$\hat{\beta}\circ(h_{x_0})_* = (h_{x_1})_*\circ \hat{\alpha}$. 
+
+This equation expresses the fact that the following diagram of maps "commutes."
+
+(See graph in text. That's a bit beyond my own TeX-ing ability, at the moment.)
+
+
+$$ \hat{\beta}\circ(h_{x_0})([f])
+= [\overline{\beta}]*(h_{x_0})([f])*[\beta] $$
+
+$$ = [h\circ \overline{\alpha}]*[h\circ f]*[h\circ\alpha] $$
+$$ = [h\circ(\overline{\alpha}*f*\alpha)] $$ 
+$$ = (h_{x_1})[\overline{\alpha}*f*\alpha] $$ 
+$$ = (h_{x_1})\circ \alpha([f]) $$

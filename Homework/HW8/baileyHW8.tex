@@ -1,0 +1,162 @@
+% Created 2020-04-17 Fri 14:55
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Homework 8, Math 532}
+\lhead{Jake Bailey}
+\rfoot{Page \thepage}
+\newtheorem{definition}{Definition}[section]
+\author{Jacob Bailey}
+\date{\today}
+\title{Homework Set 8}
+\hypersetup{
+ pdfauthor={Jacob Bailey},
+ pdftitle={Homework Set 8},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{Problem 1}
+\label{sec:org7a49c94}
+Let \(X\) be limit point compact. 
+
+a) If \(f: X\rightarrow Y\) is continuous, does it follow that \(f(X)\) is limit
+point compact? 
+
+No. If \(X\) is compact, the image is compact, so we need an example which is
+limit point compact, but not compact. We take \(X\) as defined in Example 1 of
+section 28, i.e. \(X = \mathbb{Z}_+\times Y\), where \(Y\) is a two point set with
+the indiscrete topology. Then, the projection map in the first coordinate to
+\(\mathbb{Z}_+\) is continuous, but maps the limit point compact space \(X\) to the
+non-limi point compact space \(\mathbb{Z}_+\). 
+
+b) If \(A\) is a closed subset of \(X\), does it follow that \(A\) is limit point
+compact? 
+
+Yes. An infinite subset of \(A\) has a limit point in \(X\) which is a limit point
+of \(A\) as well. 
+
+c) If \(X\) is a subspace of the Hausdorff space \(Z\), does it follow that \(X\) is
+closed in \(Z\)? 
+
+We comment that it is not generally true that the product of two limit point
+copact spaces is itself limit point compact, even if the Hausdorff condition is
+assumed. But the examples are fairly sophisticated. 
+
+No. For a counterexample, we take the space from example 2: \(S_{\Omega}\subseteq
+\overline{S}_{\Omega}\). \(S\) is not compact, but \(\overline{S}_{\Omega}\) is both
+Hausdorff and compact, and thus limit point compact. Closedness would require
+that \(S_{\Omega}\) also be compact, by theorem 26.3. 
+
+\section{Problem 2}
+\label{sec:org378247b}
+A space \(X\) is said to be \textit{countably compact} if every countable open
+covering of \(X\) contains a finite subcollection that covers \(X\). Show that for a
+\(T_1\) space \(X\), countable compactness is equivalent to limit point compactness. 
+[\textit{Hint:} If no finite subcollection of \(U_n\) covers \(X\), choose \(x_n
+\not\in U_1\cup\ldots\cup U_n\) for each \(n\).]
+
+\begin{proof}
+Let \(X\) be a limit point compact \(T_1\) space and \(\{U_n\}\) be a countable open
+covering of \(X\) such that there is no finite subcovering of \(X\). Let \(V_n =
+U_1\cup\ldots\cup U_n\). Note that for every \(n\), \(V_n\) does not cover \(X\), but
+for every \(x\in X\) there is a minimal \(n_x\) such that \(x \in V_{n_x}\). Let
+\(x_0\in X\). For each \(n\geq 1\), let \(x_n\in X\setminus V_{n_{x_{n-1}}}\). This
+defines an infinite subset of \(X\) that must have a limit point \(a\). But then the
+neighborhood \(V_{n_a}\) of \(a\) contains only a finite number of elements in the
+sequence, and for each of them that is not \(a\) we can find a neighborhood of \(a\)
+that does not contain it (since \(X\) is \(T_1\)). The finite intersection of all
+these neighborhoods with \(V_{n_a}\) is a neighborhood of \(a\) that does not
+contain any point of the sequence which is not \(a\). This contradicts the fact
+that \(a\) is a limit point of the sequence, and thus \(X\) must be countably
+compact.
+
+Next, suppose \(X\) is countably compact and \(Y\) is an infinite subset of \(X\).
+There is a countably infinite subset \(Z\subseteq Y\) and every limit point of \(Z\)
+is a limit point of \(Y\), as well. If no point in \(Z\) is a limit point, then
+every point in \(Z\) has a neighborhood that does not contain any other points,
+and the countable collection of such neighborhoods covers \(Z\). Since each set in
+the collection covers one point of \(Z\) and \(Z\) is infinite, there is no finite
+subcollection which also covers \(Z\). Therefore, \(Z\) is not closed (as a closed
+subset of a countably compact space must also be countably compact). Thus, if
+\(Z\) is closed, then it must have a limit point, and therefore be limit point
+compact. 
+\end{proof}
+\section{Problem 3}
+\label{sec:org70164db}
+Let \(\{X_{\alpha}\}\) be an indexed family of nonempty spaces. 
+
+a) Show that if \(\prod X_{\alpha}\) is locally compact, then each \(X_{\alpha}\) is
+locally compact and \(X_{\alpha}\) is compact for all but finitely many values of
+\(\alpha\). 
+
+The projection map is continuous. Therefore, we may use the result of the next
+exercise (exercise 3, page 186) to argue that all \(X_{\alpha}\) are compact. A
+compact subspace of the product containing an open set has all but finitely many
+projectionsequal to the whole corresponding space, since the projection is
+continuous, these spaces must be compact. 
+
+b) Prove the converse, assuming the Tychonoff theorem, that an arbitrary product
+of compact spaces is compact. 
+
+Assuming the Tychonoff theorem, all we need to prove is that the product of two
+locally compact spaces is locally compact. For any product of two locally
+compact spaces \(X\times Y\), we can simply find the corresponding compact subsets
+and take their products. These product spaces are guaranteed to be compact, by
+theorem 26.7. 
+
+\section{Problem 4}
+\label{sec:org7e398e4}
+Prove that the one-point compactification of \(\mathbb{R}\) is homeomorphic with
+the circle \(S^1\).
+
+\begin{proof}
+The circle without a single point is homeomorphic to the real line. Next, we use
+two facts: first, that the one-point compactification of \(\mathbb{R}\) is unique
+up to homeomorphism; second, that the compactification of the punctured circle
+is the whole circle. Thus, the one-point compactification of \(\mathbb{R}\) is
+homeomorphic to the circle. 
+\end{proof}
+
+\section{Problem 5}
+\label{sec:org15f736d}
+Let \(C\) be the Cantor set. 
+
+a) Show that \(C\) is totally disconnected.
+
+\begin{proof}
+For any two points \(x,y\inC\), \(x\not = y\), there exists \(n\) such that they cannot
+lie in the same closed interval \(A_n\). Therefore, there is a point \(z\) beteen
+them which is not in \(C\), and the set can be separated by the rays \((-\infty,
+z)\) and \((z, \infty)\).  
+\end{proof}
+
+b) Show that \(C\) is compact. 
+
+\begin{proof}
+\(C\) is a closed subspace of a compact space, \([0,1]\). Thus, by theorem 26.2, it
+is compact. 
+\end{proof}
+\end{document}

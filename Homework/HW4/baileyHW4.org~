@@ -1,0 +1,120 @@
+#+TITLE: Homework Set 4
+#+author: Jacob Bailey
+#+OPTIONS: toc:nil
+#+LATEX_HEADER:\usepackage{amsthm}
+#+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage{amssymb}
+#+LATEX_HEADER:\usepackage{graphicx}
+#+LATEX_HEADER:\usepackage{fancyhdr}
+
+#+LATEX_HEADER:\pagestyle{fancy}
+#+LATEX_HEADER:\fancyhf{}
+#+LATEX_HEADER:\rhead{Homework 3, Math 532}
+#+LATEX_HEADER:\lhead{Jake Bailey}
+#+LATEX_HEADER:\rfoot{Page \thepage}
+#+LATEX_HEADER:\newtheorem{definition}{Definition}[section]
+
+* Problem 1
+
+Show that $X$ is Hausdorff if and only if the digaonal $\Delta = \{\
+x\times x\ |\ x\in X\}$ is closed in $X\times X$. 
+
+This problem was solved in Homework 3. Per Dr. Aubrey's instructions,
+we're skipping it this time around. 
+
+* Problem 2
+
+Show that the $T_1$ axiom is equivalent to the condition that for each
+pair of points in $X$, each has a neighborhood not containing the
+other. 
+
+* Problem 3
+
+If $A\subseteq X$, we define the \textbf{boundary} of $A$ by the
+equation
+
+$\text{Bd} A = \overline{A}\cap\overline{(x\setminus A)}$.
+
+1) Show that Int $A$ and Bd $A$ are disjoint and that $\overline{A} =$
+   Int$ A\cup$Bd$A$.
+2) Show that Bd $A = \emptyset$ iff $A$ is both open and closed.
+
+#+begin_proof
+If $A$ is closed, then $A = \overline{A}$. If $A$ is open, then
+$X\setminus X$ is closed, and also equal to its closure. Then, Bd $A$
+= $\overline{A}\cap\overline{(X\setminus A)}$ = $A\cap(X\setminus A)$
+= $\emptyset$. 
+
+If Bd $A$ = $\emptyset$, then $\overline{A}\cap\overline{X\setminus A}
+= \emptyset$. This implies $A = \overline{A}$, and $(X\setminus A) =
+\overline{(X\setminus A)}$. Thus, $A$ is both closed and open. 
+#+end_proof
+
+3) Show that $U$ is open iff Bd$U = \overline{U}\setminus U$.
+
+#+begin_proof
+If $U$ is open, $X\setminus U$ is closed. Bd $U$ =
+$\overline{U}\cap\overline{(X\setminus U)} =
+\overline{U}\cap(X\setminus U) = (\overline{U}\cap X)\setminus
+(\overline{U}\cap U) = \overline{U}\setminus((U\cup U')\cap U) =
+\overline{U}\setminus U$.
+
+Next, let Bd$U$ = $\overline{U}\setminus U$. But, Bd $U$ =
+$\overline{U}\cap\overline{(X\setminus U)}$. We can rewrite the first
+equation as Bd$U$ = $(\overline{U}\cap X)\setminus (\overline{U}\cap
+U)$, which is equivalent to $\overline{U}\cap (X\setminus U)$, as
+shown in the preceding paragraph. Then, we have that
+$\overline{U}\cap\overline{(X\setminus U)} = \overline{U}\cap
+(X\setminus U)$, such that $\overline{(X\setminus U)} = (X\setminus
+U)$, and thus $(X\setminus U)$ is closed. $U$ is open. 
+
+#+end_proof
+
+4) If $U$ is open, is it true that $U = $Int $\overline{U}$? Justify
+   your answer. 
+
+By definition, Int $U$ is the union of all open sets contained in
+$U$. If $U$ is open, then Int $U$ = $U$. We know from theorem 17.6 of
+Munkres that $\overline{U} = U\cup U'$, where $U'$ is the set of all
+limit points of $U$. We also know that adding the limit points to the
+set creates a closed set, not an open one, so we conclude that $U$ is
+the "biggest" open set contained within $\overline{U}$. 
+
+* Problem 4
+
+Prove that for functions $F:\mathbb{R}\rightarrow\mathbb{R}$ the
+$\epsilon - \delta$ definition of continuity implies the open set
+definition. 
+
+#+begin_proof
+Assume $f$ is continuous. Thus, by the "$\delta - \epsilon$"
+definition of continuity, we have that $\forall \epsilon > 0, \exists
+\delta > 0$ such that if $|x - y| < \delta$, then $|f(x) - f(y)| <
+\epsilon$.
+
+Let $U\subseteq\mathbb{R}$ be open. Then, for any $y\in U$, $\exists
+x$ such that $f(x) = y$, and there are neighborhoods $y \in U_y$ and
+$x\in V_x$. Additionally, we can choose to let $U = \bigcup U_y$ for
+our chosen $y$, and since the $U_y$ are open (in the standard
+topology, assumed here), $U$ is also open. Finally, we note that all
+of the $V_x$ are open in the standard topology, so their union $V =
+\bigcup V_x$ is as well. But, by construction, $V = f^{-1}(U)$, so the
+preimage of an open set is open. 
+#+end_proof
+
+* Problem 5
+
+Let $a,b$, and $c$ be real numbers with $a\leq b\leq c$, and $a <
+c$. Let $X$ denote the set $[a,c]\cup\{b'\}$, where $[a,c] denotes a
+closed interval in the real line and $b'$ is a point not in
+$[a,c]$. Let $F$ be the family of subsets of $X$ consisting of all
+open subsets of $[a,c]$ together with all subsets of the form
+$(U\setminus \{b\})\cup\{b'\}$, where $U$ is an open subset of $[a,c]$
+\textbf{which contains $b$}. (Emphasis mine). 
+
+1) Show that $F$ is a basis for a topology on $X$.
+2) Show that the map which interchanges $b$ and $b'$ and is the
+   identity elsewhere is a homeomorphism.
+3) Show that this topology on $X$ is not Hausdorff
+4) Show that if $f: X\rightarrow \mathbb{R}$ is continuous, then $f(b)
+   = f(b')$.

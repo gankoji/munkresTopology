@@ -1,0 +1,88 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{question}{Question}[section]
+#+LATEX_HEADER: \newtheorem{summary}{Summary}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[section]
+* Compact Sets, Continued <2020-03-25 Wed 09:00> 
+
+Proving that the product of finitely many compact spaces is itself compact.
+Currently proving a lemma called "the tube lemma". 
+
+Suppose we have topological space $X,Y$ with $Y$ compact. Let $x_0 \in X$, and
+let $U$ be open in $X\times Y$, such that $x_0\times Y\subseteq U\subseteq
+X\times Y$. Claim that $\exists W\subseteq X$, open, such that $x_0\in W$ and
+$W\times Y\subseteq U$. Proof is in notes. 
+
+We then prove that the product of two compact spaces is itself compact. Proof of
+the theorem that finitely many compact spaces form a compact product then
+follows from induction. 
+
+Sidenote: I should read up through sections 23-25, to firm up my understanding
+of connectedness. Then move on to compactness in section 26.
+
+#+begin_lemma
+Consider $X\times Y$ in the product topology. Suppose $Y$ is compact, and that
+$x_0\in X$. If $N\subseteq X\times Y$ is open and $x_0\times Y \subseteq N$,
+$\exists W\subseteq X$ open such that $x_0\times Y\subseteq W\times Y \subseteq
+N$. This is the Tube Lemma.
+#+end_lemma
+
+#+begin_definition
+A collection $C$ of subsets of $X$ is said to have the "finite intersection
+property" if for every finite subcollection $\{C_1, \ldots, \C_n\}$, the
+intersection $C_1\cap\ldots\cap C_n \not = \emptyset$. 
+#+end_definition
+
+#+begin_theorem
+Let $X$ be a topological space. Then $X$ is compact iff for every collection $C$
+of closed sets which has the finite intersection property, we have
+$\bigcap\limits_{c\in C} c\not = \emptyset$.
+#+end_theorem
+
+That wraps section 26 on the basics of compactness. 
+
+* Compact subspaces of the real line <2020-03-25 Wed 09:29>
+
+We begin by trying to prove that closed intervals within $\mathbb{R}$ are
+compact. Consider the interval $[-1, 1]\subseteq \mathbb{R}$, which we know by
+Heine-Borel is compact. (This is also equivalent, in the reals, to the
+Bolzano-Weierstrass theorem, as we know from graduate analysis).
+
+ #+begin_theorem
+ Let $X$ be a simply ordered set with the least upper bound property. Then in
+ the order topology, every closed interval (within $X$) is compact. 
+ #+end_theorem
+
+In the context of the reals, this property is also often called completeness.
+Apparently, we can also prove that the real line is the *unique* infinite
+complete set with the least upper bound property. 
+
+#+begin_proof
+Step 1: Let $a < b$. Let $A$ cover $[a,b]$ by sets open in $[a,b]$ in the
+subspace topology (subspace of $\mathbb{R}$). It is enough to show that there is
+a finite subcollection of $A$ which covers $[a,b]$. 
+
+First, we prove that if $x \in [a,b]$, $x\neq b$ then $\exists y > x$ in $[a,b]$
+such that $[x,y]$ can be covered by at most two elements of $A$. If $x$ has an
+immediate successor, choose $y$ to be this successor. In that case, $[x,y] =
+\{x,y\}$. Thus, we are done, because $\{x,y\}$ is covered by at most two
+elements of $A$.
+
+If $x$ has no immediate successor, let $\alpha \in A$ so that $x\in \alpha$.
+Since $x\neq b$ and $a$ is open, $\exists c\in [a,b]$ such that $[x,c) \subseteq
+\alpha$. Let $y \in (x,c)$. Then, $[x,y] \subseteq \alpha$ is covered by a
+single element of $A$.
+
+Step 2: Let $C = \{ y \in [a,b]\ |\ y > a : [a,y] \text{can be covered by
+finitely many elements of} A\}. By step 1 (with $x = a$), $C\neq \emptyset$. Let
+$c = \text{sup} C$. so $a < c \leq b$.
+
+Step 3: Claim that $c \in C$. 
+
+Step 4: Claim that $c = b$, and we're done.  
+#+end_proof

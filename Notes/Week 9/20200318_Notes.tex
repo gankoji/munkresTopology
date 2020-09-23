@@ -1,0 +1,128 @@
+% Created 2020-03-20 Fri 10:36
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{summary}{Summary}[section]
+\newtheorem{corollary}{Corollary}[section]
+\author{Jake Bailey}
+\date{\today}
+\title{Math 532 Notes}
+\hypersetup{
+ pdfauthor={Jake Bailey},
+ pdftitle={Math 532 Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Compactness \textit{<2020-03-18 Wed 09:15>}}
+\label{sec:org9a459c2}
+\begin{definition}
+Definition: A collection \(A\) of subsets of \(X\) is said to \textit{cover} \(X\), or
+to be a covering of \(X\), if the union of elements of \(A\) is equal to \(X\). It is
+called an \textit{open covering} of \(X\) if its elements are open subsets of \(X\). 
+\end{definition}
+
+Equivalently, if \(X = \bigcup\limits_{a\in A} a\), then \(A\) \textbf{covers} \(X\)
+
+\begin{definition}
+Definition: A space \(X\) is said to be \textit{compact} if every open covering of
+\(X\) contains a finite subcollection that also covers \(X\). 
+\end{definition}
+
+Example: \(\mathbb{R}\) is not compact.
+
+Thinking through this, there's no way to cover \(\mathbb{R}\) with a finite number
+of open sets.  
+
+Example: \(X = \{0\}\cup\{1/n | n\in\mathbb{Z}_+\}\subseteq\mathbb{R}\)
+
+Let \(A\) be an open covering of \(X\). Choose \(a \in A\) such that \(0 \in a = (a,b)
+\cap X\). By the Archimedean Principle, \(\exists N\in \mathbb{Z}_+\) such that
+\(1/n < b\). Then, \(1/m\in a, \forall m \geq N\). So \(a\) contains all but finitely
+many elements of \(X\). Choose \(a_1, a_2, \ldots\) such that these remaining points
+are in their own \(a_i\). Then the collection \(a_i\) covers \(X\).
+
+\begin{lemma}
+Let \(Y\) be a subspace of \(X\). Then \(Y\) is compact iff every open covering
+of \(Y\) by sets open in \(X\) contains a finite subcollection covering \(Y\).  
+\end{lemma}
+
+\begin{proof}
+Suppose \(Y\) is compact. Suppose \(A = \{a_{\alpha\in J}\}\) is a covering
+of \(Y\) by sets open in \(X\). Let \(A' = \{a_{\alpha}\cap Y\}\). Each
+\$a\textsubscript{\(\alpha\)}\(\cap Y\) is open in \(Y\). Further, \(Y = \bigcup\limits_{\alpha\in
+J}(a_{\alpha}\cap Y)\). So, \(A'\) is an open covering of \(Y\). So, \(A'\) has a
+finite subcovering, say \(\{a_1\cap Y,\ldots, a_n\cap Y\}\) covers \(Y\), and thus
+\(\{a_1, \ldots, a_n\}\) also covers \(Y\). 
+\end{proof}
+
+Fun fact: any set with the indiscrete topology, every space is compact
+(including \(\mathbb{R}\)). 
+
+Finish the other direction of the proof next class. 
+\section{\textit{<2020-03-20 Fri 09:13> } More on Compact Spaces}
+\label{sec:org9823075}
+
+\begin{theorem}
+Every closed subspace of a compact space is compact. 
+\end{theorem}
+Sidenote: an open subspace of a compact space is not necessarily compact. 
+
+\begin{proof}
+Let \(Y\) be a closed subspace of the compact space \(X\). Let \(A\) be an open
+covering of \(Y\) by sets open in \(X\). Let \(B = A \cup \{X\setminus Y\}\). Then \(B\)
+covers \(X\), since \(A\) already covers \(Y\). We know \(X\) is compact, so \(B\) must
+have a finite subcover (a finite subcollection of \(B\) must also cover \(X\)). If
+\(B_s\) contains \(X\setminus Y\), throw it out, if it doesn't, do nothing. What
+remains is a finite collection which covers \(Y\). 
+\end{proof}
+
+Converse is not true: A compact subspace of a compact space does not have to be
+closed. The spaces must be Hausdorff for this to be the case. 
+
+\begin{theorem}
+Every compact subspace of a Hausdorff space is closed. 
+\end{theorem}
+Recall that in a Hausdorff space, for any two points in the space, we can find
+open sets which contain just each point, not the other, and they don't
+intersect. 
+
+\begin{proof}
+Let \(Y\) be a compact subspace of the Hausdorff space \(X\). Claim that
+\(X\setminus Y\) is open. Let \(x_0 \in X\setminus Y\). Want to show that there
+exists \(U\) open such that \(x_0 \in U \subseteq X\setminus Y\). For each \(y\in Y\)
+choose disjoint neighborhoods, \(U_y, V_y\) open in \(X\) such that \(x_0 \in U_y\)
+and \(y\in V_y\). Then, \(\{V_y | y \in Y\}\) is an open covering of \(Y\) by sets
+that are open in \(X\). Y is compact, so, there exists a finite subcovering. I.e.
+for finitely many \(V_y\), \(Y\) is covered. Call these \(V_{y1}, V_{y2}, 
+ldots V_{yn}\). Then, \(Y \subseteq \bigcup\limits_n V_{yn}\). 
+
+Consider \(U = \bigcap\limits_n U_{yn}\). \(V\) is open and disjoint from \(U\). Let
+\(z \in V\), and then \(z \in V_{yi}\) for some \(i\). Then \(z \not\in U_{yi}\), so \$z
+\textlnot{}\(\in\) \(U\). So \(V\cap U = \emptyset\), so \(Y\cap U = \emptyset\), or \(U \subseteq
+X\setminus Y\), and \(x_0 \in U\), which is what we set out to show. Thus, \(Y\) is
+closed. 
+\end{proof}
+\end{document}

@@ -1,0 +1,20 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{question}{Question}[section]
+#+LATEX_HEADER: \newtheorem{summary}{Summary}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[section]
+* Connected Spaces 
+Definition: A \textit{separation} of $X$ is a pair $U,V$ of disjoint nonempty
+open susbets of $X$ whose union is $X$. The space $X$ is said to be
+\textit{connected} if there does not exist a separationof $X$. 
+
+Note that connectedness is formulated entirely in terms of the collection of
+open sets of $X$. Thus, connectedness is a topological property, and any space
+that is homeomorphic to a connected space is itself connected. 
+
+

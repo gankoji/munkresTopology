@@ -1,0 +1,83 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{question}{Question}[section]
+#+LATEX_HEADER: \newtheorem{summary}{Summary}[section]
+
+* Bases again <2020-01-22 Wed>
+
+An eloquent summary: Bases must span the underlying space, and
+intersections of elements must contain other elements (i.e. must have
+sufficent granularity to contain every element of the set).
+
+Open intervals predate topologies. 
+
+** Example
+Let $B$ be the collection fo all open intervals on $\mathbb{R}$,
+together with all sets of the form $(a,b)\setminus K$, where $K = \{
+1/n\ |\ n \in \mathbb{N}\}$. This is a basis for a topology on
+$\mathbb{R}$, called the K-topology, and on $\mathbb{R}$ is also
+written $\mathbb{R}_K$.
+
+** Back to bas(is)ics
+#+begin_lemma
+$\mathbb{R}_l$ and $\mathbb{R}_K$ are both finer than
+$\mathbb{R}_{std}$, but they are not comparable to each other.
+#+end_lemma
+
+On $\mathbb{R}^2$ the collection of all open discs is a basis for a
+topology, as are open balls in $\mathbb{R}^n$. Open rectangles (cubes)
+are also a basis, for the same topology. Proved by inclusion of open
+sets.
+
+#+begin_question
+Prove that $B_{disc}$ and $B_{rect}$ generate the same topology. 
+#+end_question
+
+#+begin_lemma
+Let $(X,T)$ be a topological space. Suppose $C$ is a collection of
+open sets such that $\forall U \subseteq X$, and each $x \in U$,
+$\exists c \in C$, such that $x\in c \subseteq U$. Then $C$ is a basis
+for $T$.
+#+end_lemma
+
+#+begin_proof
+To be a basis, $C$ a) Must cover $X$, and b) if $x \in c_1\cap c_2$,
+then $\exists c_3$ such that $x \in c_3, c_3 \subseteq c_q\cap c_2$.
+
+claim $\forall x \in X, \exists c \in C$ such that $x \in c$. Let $x
+\in X$. $X is open in $T$, so by construction of $C$, $\exists c \in
+C$ such that $x \in c \subseteq X$. 
+
+Next, claim $\forall c_1, c_2 \in C$ and $\forall x \in c_1\cap c_2$,
+$\exists c_3 \in C$ such that $x \in c_3 \subseteq c_1\cap c_2$. Let
+$x \in c_1\cap c_2$, $c_1, c_2 \in C$. $C$ is a collection of open
+sets, i.e. members of $T$. $T$ is closed under finite intersections,
+since it is a topology. Thus $c_1\cap c_2 \in T$. By construction of
+$C$, $\exists c_3 \in C$ such that $x \in c_3 \subseteq c_1\cap c_2$. 
+
+Let $U\in T$. $\forall x \in U$, $\exists c_x \in C$ such that $x \in
+c_x \subseteq U$. Then, $U = \bigcup\limits_{x \in U} c_x$. $T'$ is
+closed under unions, so $U \in T'$.
+
+Next, let $U \in T'$. Then $U = \bigcup\limits_{\alpha \in J}
+c_{\alpha}$. Each $c_{\alpha}$ is open (in $T$), by
+construction. Thus, $U \in T$. Hence, $C$ is a basis, and it generates
+$T$.
+#+end_proof
+
+** The Dictionary Order Topology
+#+begin_definition
+A relation $c$ on a set $X$ is called an \textbf{order relation} if it
+has the following properties:
+
+1) Comparability: \forall x_1, x_2, either $x_1 c x_2$, or $x_2 c
+   x_1$.
+2) Non-reflexivity: For no $x \in X$ does $x c x$ hold.
+3) Transitivity: $\forall x,y,z \in X$, if $x c y$ and $y c z$, then
+   $x c z$.
+#+end_definition

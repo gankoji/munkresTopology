@@ -1,0 +1,181 @@
+#+TITLE: Math 532 Notes
+#+AUTHOR: Jake Bailey
+
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{question}{Question}[section]
+#+LATEX_HEADER: \newtheorem{summary}{Summary}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[section]
+
+* Continuous Functions <2020-02-10 Mon 09:06>
+#+begin_definition
+Let $X,Y$ be topological spaces. A function $f: X\rightarrow Y$ is
+said to be \textbf{continuous} if for every open $V \subseteq Y$ the
+preimage $f^{-1}(V)$ is open in $X$. 
+#+end_definition
+
+Note: If topology is given by a basis, it suffices to show above
+condition for the basis. Same goes for a subbasis. 
+
+The above definition of continuity is equivalent to the $\epsilon -
+\delta$ definition of continuity in $\mathbb{R}^n$.
+
+** Examples
+The identity function $id: \mathbb{R}\rightarrow\mathbb{R}_l$ is not
+continuous, but $id: \mathbb{R}_l \rightarrow \mathbb{R}$ is, due to
+the inclusion of open sets of $\mathbb{R}$ in $\mathbb{R}_l$, but not
+the other way around. 
+
+* Exam Notes
+Expect 5-6 problems on day one, 1 extra for grad students on day
+two. Still get a chance to rework one of the problems the second day.
+
+A couple problems will be on definitions/theorems, and the rest on
+problems like the homework.
+
+Probably a good idea to work through some definition/theorem
+flashcarding or the like this week, brush up.
+
+* More on continuous functions
+
+#+begin_theorem
+Let $X$ and $Y$ be topological spaces. The following are equivalent:
+- $f: X\rightarrow Y$ is continuous
+- $\forall A \subseteq X$, $f(\overline{A}) \subseteq \overline{f(A)}$
+- $\forall B \subseteq Y$, $B$ closed, $f^{-1}(B)$ is closed
+- $\forall x \in X$, and for every neighborhood $V$ of $f(x)$,
+  $\exists U$ (neighborhood of $x$) such that $f(U) \subseteq V$.
+
+#+end_theorem
+
+For proof, we'll show 1 -> 2 -> 3 -> 1 = 4
+#+begin_proof
+1 implies 2: Assume $f$ is continuous, and $A\subseteq X$. Let
+$x\in\overline{A}$. Claim that $f(x) \in f(\overline{A})$. Recall that
+a point is in the closure of a set if every neighborhood of the point
+intersects the set. Let $V$ be a neighborhood of $f(x)$. Then $x \in
+f^{-1}(V)$. But $x \in \overline{A}$, so every neighborhood of $x$
+intersects $A$ at some point. Let $y \in f^{-1}(V)\cap A$. Then, $f(y)
+\in V\cap f(A)$. So $V\cap f(A) \not = \emptyset$, and thus $f(x) \in
+\overline{f(A)}$.
+
+2 implies 3: Assume that $f(\overline{A}) \subseteq
+\overline{f(A)}$. Let $B\subseteq Y$ be closed. Claim that $A =
+f^{-1}(B)$ is closed in $X$, i.e. claim $\overline{A} = A$. By set
+theory we have $f(A) = f(f^{-1}(B)) \subseteq B$. Let $x \in
+\overline{A}$. Then $f(x) \in f(overline{A})$. By the above,
+$f(\overline{A})\subseteq \overline{f(A)}\subseteq \overline{B} =
+B$. So $x \in f^{1}(B) = A$. Thus, we've shown that $\overline{A}
+\subseteq A$, and we know that $A \subseteq \overline{A}$, thus $A =
+\overline{A}$, and $A$ is closed. 
+
+3 implies 1: Assume that $\forall B\subseteq Y$ closed, $A =
+f^{-1}(B)$ is also closed. Let $U \subseteq Y$ be open. Then, claim
+that $f^{-1}(U)$ is open in $X$. Let $V = Y - U$ be the complement of
+$U$. $V$ is closed, so by assumption, $T = f^{-1}(V)$ is also
+closed. But, $T = f^{-1}(Y) - f^{-1}(U) = X - f^{-1}(U)$. Thus, $C =
+f^{-1}(U)$ is open, since its complement is closed. $f$ is continuous. 
+
+4 equals 1: Both ways
+
+1 implies 4: Let $f$ be continuous. Let $x \in X, V_{f(x)}\subseteq
+Y$. Claim that $\exists U_x$ such that $f(U_x) \subseteq V$. To see
+this, take $U_x = f^{-1}(V_{f(x)})$, which is an open neighborhood of
+$f(x)$. Then, $f(U) \subseteq V$. 
+
+4 implies 1: Assume that $\forall x \in X$ and $\forall V_{f(x)}
+\subseteq Y$, $\exists U_x$ such that $f(U) \subseteq V$. Claim that
+$f$ is continuous, i.e. that $f^{-1}(V)$ is open, for all open
+$V$. Let $V \subseteq Y$ be open. Let $f(x) \in V$. Let $V_x$ be an
+open neighborhood of $f(x)$ such that $V_x \subseteq V$. By our
+assumption, $\exists U_x \subseteq X$ open for each $V_x$, and $f(U_x)
+\subseteq V_x$. Then, let $U = \bigcup U_x$. This $U$ is still open,
+and it is the pre-image of $V$ under $f$. $f$ is continuous. 
+#+end_proof
+
+
+* Homeomorphisms <2020-02-12 Wed 09:13>
+
+#+begin_definition
+Let $X$ and $Y$ be topological spaces and $f:X\rightarrow Y$ be
+bijective (1-1 and onto). Then $f$ is called a homeomorphism if and
+only if both $f$ and the inverse function $f^{-1}:Y\rightarrow X$ are
+continuous.
+#+end_definition
+
+NOTE: In homeworks and exam, don't need to prove that a function is
+continuous. 
+
+Equivalently, a bijection $f:X\rightarrow Y$ is a homeomorphism if
+$f(U)$ is open iff $U$ is open.
+
+Note: A homeomorphism gives a bijection between both the spaces $X$
+and $Y$ and their topologies.
+
+#+begin_definition
+A property of a space expressed solely in terms of the topology
+on the space is called a \textbf{topological property}.
+#+end_definition
+
+#+begin_definition
+If $f:X\rightarrow Y$ is an injective continuous map, and we consider
+$Z = f(X)$ as a subspace of $Y$, then if $f':X\rightarrow X$ is
+defined as the restriction of $f$'s range to $f(X) = Z$, then $f'$ is
+a homeomorphism, and we call $f$ a \textbf{topological embedding}.
+#+end_definition
+
+** Examples
+
+$f:\mathbb{R}\rightarrow\mathbb{R}, f(x) = 3x + 1$ is a
+homeomorphism. $g(x) = \frac{1}{3}*(x - 1)$ is its inverse. 
+
+A bijective function can be continuous and not be a
+homeomorphism. Consider $S^1$ (the unit circle) in the subspace
+topology. Then, consider $F: [0,1) \rightarrow S^1, F(t) = (cos 2\pi
+t, sin 2 \pi t)$. Notice $[0, 1/4)$ is open in $[0,1)$, but
+$F([0,1/4))$ is not open in $S^1$.
+
+$F:(-1, 1)\rightarrow \mathbb{R}, F(x) = \frac{x}{1 - x^2}$. Then,
+$G(y) = \frac{2y}{1 + (1 + 4y^2)^{1/2}}$. This bijection is order
+preserving, so it's a homeomorphism. 
+
+** Back to homeomorphism theorems
+#+begin_theorem
+(Rules for constructing continuous functions): 
+
+1) [The constant function] If $f:X\rightarrow Y$ maps all of $X$ to a
+   single point $y_0\in Y$, then $f$ is continuous.
+2) [Inclusion] If $A$ is a subspace of $X$ the inclusion $j:
+   A\rightarrow X$ is continuous.
+3) [Composites] If $f:X\rightarrow Y$, $g:Y\rightarrow Z$ are
+   continuous, then $g\circ f$ is continuous.
+4) [Restricting Domain] If $f:X\rightarrow Y$ is continuous, and $A$ a
+   subspace of $X$, then $f|A:A\rightarrow Y$ is continuous.
+5) [Restricting or Expanding the Codomain] of a continuous function
+   gives a continuous function.
+6) [Local Formulation of Continuity] The map $f:X\rightarrow Y$ is
+   continuous if $X$ can be written as a union of sets $U_{\alpha}$
+   such that $f|U_{\alpha}$ is continuous for each $\alpha$.
+#+end_theorem
+
+#+begin_proof
+(Just of part 6): Let $U\subseteq Y$ be open. Then, $f^{-1}(U) =
+\bigcup f|U_{\alpha}^{-1}(U)$, and each $(f|U_{\alpha}(U))$ is open. 
+#+end_proof
+
+#+begin_lemma
+(The Pasting Lemma) Let $X = A\cup B$, where $A$ and $B$ are closed in
+$X$. Let $f:A\rightarrow Y$, and $g:B\rightarrow Y$ be continuous. If
+$f(x) = g(x)$ for all $x \in A\cap B$, then $h: X\rightarrow Y$, the
+combination of the two, is continuous.
+#+end_lemma
+
+#+begin_proof
+Let $C \subseteq Y$ be closed. Then, $h^{-1}(C) = f^{-1}(C)\cup
+g^{-1}(C)$. $f^{-1}(C)$ is closed in $A$, same for $g$ and $B$. But,
+$A$ and $B$ are both closed in $X$, so the preimages of $C$ are also
+closed in $X$ (what theorem is this?). So, $f^{-1}(C)\cup g^{-1}(C)$
+is closed in $X$, and $h$ is continuous. 
+#+end_proof
